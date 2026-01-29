@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Maus Updates</title>
+    <link>https://mausformac.com/maus/appcast.xml</link>
+    <language>en</language>
+    
+    <item>
+      <title>Version 1.0</title>
+      <pubDate>Wed, 29 Jan 2026 12:00:00 +0000</pubDate>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>Initial Release</h2>
+        <ul>
+          <li>Clipboard history</li>
+          <li>Pin favorites</li>
+          <li>Quick paste with Cmd+Shift+V</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://mausformac.com/maus/releases/Maus-1.0.dmg"
+        length="2715884"
+        type="application/octet-stream"
+        sparkle:edSignature="brHLxgg+huKrZUx00z3nAZhGZsVZbDxefUFvcBToS1qoem0K7/VjdhTvA6T8m62Bj5U3s5l7VGelgVU533VhBw=="
+      />
+    </item>
+  </channel>
+</rss>
