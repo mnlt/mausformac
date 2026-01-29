@@ -5,9 +5,9 @@ const MausLanding = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: '#0a0a0a',
+      backgroundColor: '#ffffff',
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-      color: '#ffffff',
+      color: '#1a1a1a',
     }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
@@ -36,7 +36,7 @@ const MausLanding = () => {
         .logo-icon {
           width: 36px;
           height: 36px;
-          background: #ffffff;
+          background: #1a1a1a;
           border-radius: 8px;
           display: flex;
           align-items: center;
@@ -76,7 +76,7 @@ const MausLanding = () => {
         
         .hero .subhero {
           font-size: 18px;
-          color: #999;
+          color: #666;
           margin-bottom: 32px;
         }
         
@@ -110,21 +110,22 @@ const MausLanding = () => {
         }
         
         .cta-button.primary {
-          background: #7C6BFF;
-          color: white;
+          background: #ffffff;
+          color: #1a1a1a;
+          border: 1px solid #e0e0e0;
         }
         
         .cta-button.primary:hover {
-          background: #6B5CE7;
+          background: #f5f5f5;
         }
         
         .cta-button.secondary {
-          background: #ffffff;
-          color: #0a0a0a;
+          background: #1a1a1a;
+          color: #ffffff;
         }
         
         .cta-button.secondary:hover {
-          background: #e0e0e0;
+          background: #333;
         }
         
         .cta-button svg {
@@ -134,12 +135,54 @@ const MausLanding = () => {
         
         .cta-subtext {
           font-size: 13px;
-          color: #666;
+          color: #888;
+        }
+        
+        .social-proof {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-top: 24px;
+        }
+        
+        .avatars {
+          display: flex;
+          align-items: center;
+        }
+        
+        .avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 2px solid white;
+          margin-left: -8px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+          color: white;
+          font-weight: 500;
+        }
+        
+        .avatar:first-child {
+          margin-left: 0;
+        }
+        
+        .avatar:nth-child(1) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .avatar:nth-child(2) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .avatar:nth-child(3) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .avatar:nth-child(4) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .avatar:nth-child(5) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        
+        .social-proof-text {
+          font-size: 13px;
+          color: #888;
         }
         
         .mac-only {
           font-size: 13px;
-          color: #666;
+          color: #888;
           margin-top: 16px;
           text-align: center;
         }
@@ -153,30 +196,30 @@ const MausLanding = () => {
         .callout {
           margin-top: 32px;
           padding: 20px;
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(0, 0, 0, 0.03);
           border-radius: 12px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(0, 0, 0, 0.06);
         }
         
         .callout-features {
           font-size: 14px;
-          color: #999;
+          color: #666;
           line-height: 1.6;
           margin-bottom: 12px;
         }
         
         .callout-meta {
           font-size: 13px;
-          color: #666;
+          color: #888;
         }
         
         /* Right side - Demo */
         .demo {
           width: 480px;
           aspect-ratio: 4 / 3;
-          background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%);
+          background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
           border-radius: 16px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -190,7 +233,7 @@ const MausLanding = () => {
         }
         
         .demo-placeholder {
-          color: #444;
+          color: #bbb;
           font-size: 14px;
         }
         
@@ -247,7 +290,7 @@ const MausLanding = () => {
         <header className="header">
           <div className="logo">
             <div className="logo-icon">
-              <Rat size={20} color="#0a0a0a" />
+              <Rat size={20} color="#ffffff" />
             </div>
             <span className="logo-text">Maus</span>
           </div>
@@ -279,6 +322,17 @@ const MausLanding = () => {
                 </a>
                 <span className="cta-subtext">One-time · Unlimited history</span>
               </div>
+            </div>
+            
+            <div className="social-proof">
+            <div className="avatars">
+              <img className="avatar" src="/avatar1.jpeg" alt="" />
+              <img className="avatar" src="/avatar2.jpeg" alt="" />
+              <img className="avatar" src="/avatar3.jpeg" alt="" />
+              <img className="avatar" src="/avatar4.jpeg" alt="" />
+              <img className="avatar" src="/avatar5.jpeg" alt="" />
+            </div>
+              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
             </div>
             
             {/* <div className="callout">
