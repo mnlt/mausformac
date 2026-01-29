@@ -334,6 +334,10 @@ const MausLanding = () => {
           .mobile-ctas .cta-subtext:last-child {
             margin-top: -4px;
           }
+
+          .mobile-ctas .cta-subtexts {
+            display: none;
+          }
         }
       `}</style>
 
