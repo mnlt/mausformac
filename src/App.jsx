@@ -222,7 +222,7 @@ const MausLanding = () => {
             <div className="logo-icon">
               <Rat size={20} color="#0a0a0a" />
             </div>
-            <span className="logo-text">Maus</span>
+            <span className="logo-text">Maus (for Mac)</span>
           </div>
         </header>
 
@@ -232,7 +232,7 @@ const MausLanding = () => {
           <div className="hero">
             <h1>Your copy-paste memory. Always handy.</h1>
             <p className="subhero">
-              Maus lives where your cursor is. Copy anything, find it later, paste it faster.
+              Maus lives where your cursor is.
             </p>
             
             <div className="ctas">
@@ -247,7 +247,7 @@ const MausLanding = () => {
               </div>
               
               <div className="cta-group">
-                <a href="https://superpaste.lemonsqueezy.com/buy/5765dfc1-e222-42ad-a04f-5fe4dacc39cb" className="cta-button secondary">
+                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/42cc1b94-fb4d-42ef-b79c-74d78d5c25bc" className="cta-button secondary">
                   Get Pro – $6.99
                 </a>
                 <span className="cta-subtext">Unlimited history</span>
