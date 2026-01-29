@@ -156,24 +156,12 @@ const MausLanding = () => {
           border-radius: 50%;
           border: 2px solid white;
           margin-left: -8px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 12px;
-          color: white;
-          font-weight: 500;
+          object-fit: cover;
         }
         
         .avatar:first-child {
           margin-left: 0;
         }
-        
-        .avatar:nth-child(1) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .avatar:nth-child(2) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .avatar:nth-child(3) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .avatar:nth-child(4) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .avatar:nth-child(5) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         
         .social-proof-text {
           font-size: 13px;
@@ -191,26 +179,6 @@ const MausLanding = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
-        }
-        
-        .callout {
-          margin-top: 32px;
-          padding: 20px;
-          background: rgba(0, 0, 0, 0.03);
-          border-radius: 12px;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        
-        .callout-features {
-          font-size: 14px;
-          color: #666;
-          line-height: 1.6;
-          margin-bottom: 12px;
-        }
-        
-        .callout-meta {
-          font-size: 13px;
-          color: #888;
         }
         
         /* Right side - Demo */
@@ -237,12 +205,19 @@ const MausLanding = () => {
           font-size: 14px;
         }
         
+        /* Mobile elements - hidden on desktop */
+        .mobile-social-proof,
+        .mobile-demo,
+        .mobile-ctas {
+          display: none;
+        }
+        
         /* Mobile */
         @media (max-width: 900px) {
           .main {
             flex-direction: column;
             padding: 24px;
-            gap: 40px;
+            gap: 32px;
           }
           
           .hero {
@@ -254,17 +229,80 @@ const MausLanding = () => {
             font-size: 32px;
           }
           
-          .ctas {
-            justify-content: center;
-            flex-wrap: wrap;
+          .hero .subhero {
+            margin-bottom: 24px;
           }
           
-          .demo {
+          /* Hide desktop elements */
+          .desktop-only {
+            display: none;
+          }
+          
+          .demo-container {
+            display: none;
+          }
+          
+          /* Show mobile elements */
+          .mobile-social-proof {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+          }
+          
+          .mobile-social-proof .social-proof-text {
+            order: -1;
+          }
+          
+          .mobile-social-proof .avatars {
+            justify-content: center;
+          }
+          
+          .mobile-demo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 32px;
+          }
+          
+          .mobile-demo .demo {
             width: 100%;
             max-width: 400px;
           }
           
-          .mac-only {
+          .mobile-ctas {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+          }
+          
+          .mobile-ctas .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            justify-content: center;
+          }
+          
+          .mobile-ctas .cta-button {
+            flex: 1;
+            max-width: 180px;
+          }
+          
+          .mobile-ctas .cta-subtexts {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+            justify-content: center;
+          }
+          
+          .mobile-ctas .cta-subtext {
+            flex: 1;
+            max-width: 180px;
             text-align: center;
           }
         }
@@ -274,13 +312,27 @@ const MausLanding = () => {
             padding: 16px 20px;
           }
           
-          .ctas {
+          .mobile-ctas .cta-row {
             flex-direction: column;
-            align-items: center;
+            gap: 12px;
           }
           
-          .cta-button {
-            width: 200px;
+          .mobile-ctas .cta-button {
+            width: 220px;
+            max-width: none;
+          }
+          
+          .mobile-ctas .cta-subtexts {
+            flex-direction: column;
+            gap: 0;
+          }
+          
+          .mobile-ctas .cta-subtext {
+            max-width: none;
+          }
+          
+          .mobile-ctas .cta-subtext:last-child {
+            margin-top: -4px;
           }
         }
       `}</style>
@@ -302,10 +354,11 @@ const MausLanding = () => {
           <div className="hero">
             <h1>Your copy-paste memory. Always handy.</h1>
             <p className="subhero">
-            A clipboard manager that lives where your cursor is.
+              A clipboard manager that lives where your cursor is.
             </p>
             
-            <div className="ctas">
+            {/* Desktop CTAs */}
+            <div className="ctas desktop-only">
               <div className="cta-group">
                 <a href="/maus/releases/Maus-1.0.dmg" className="cta-button primary">
                   <svg viewBox="0 0 24 24" fill="currentColor">
@@ -324,34 +377,67 @@ const MausLanding = () => {
               </div>
             </div>
             
-            <div className="social-proof">
-            <div className="avatars">
-              <img className="avatar" src="/avatar1.jpeg" alt="" />
-              <img className="avatar" src="/avatar2.jpeg" alt="" />
-              <img className="avatar" src="/avatar3.jpeg" alt="" />
-              <img className="avatar" src="/avatar4.jpeg" alt="" />
-              <img className="avatar" src="/avatar5.jpeg" alt="" />
-            </div>
+            {/* Desktop Social Proof */}
+            <div className="social-proof desktop-only">
+              <div className="avatars">
+                <img className="avatar" src="/avatar1.jpeg" alt="" />
+                <img className="avatar" src="/avatar2.jpeg" alt="" />
+                <img className="avatar" src="/avatar3.jpeg" alt="" />
+                <img className="avatar" src="/avatar4.jpeg" alt="" />
+                <img className="avatar" src="/avatar5.jpeg" alt="" />
+              </div>
               <p className="social-proof-text">Trusted by hundreds of Mac users</p>
             </div>
             
-            {/* <div className="callout">
-              <p className="callout-features">
-                Pin favorites · Advanced Search · Back to source · Rename · Paste queue · Split texts...
-              </p>
-              <p className="callout-meta">
-                3 MB · 100% private, nothing leaves your Mac
-              </p>
-            </div> */}
+            {/* Mobile Social Proof */}
+            <div className="mobile-social-proof">
+              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
+              <div className="avatars">
+                <img className="avatar" src="/avatar1.jpeg" alt="" />
+                <img className="avatar" src="/avatar2.jpeg" alt="" />
+                <img className="avatar" src="/avatar3.jpeg" alt="" />
+                <img className="avatar" src="/avatar4.jpeg" alt="" />
+                <img className="avatar" src="/avatar5.jpeg" alt="" />
+              </div>
+            </div>
+            
+            {/* Mobile Demo */}
+            <div className="mobile-demo">
+              <div className="demo">
+                <video autoPlay loop muted playsInline>
+                  <source src="/maus-demo.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <p className="mac-only">Requires macOS 14+</p>
+            </div>
+            
+            {/* Mobile CTAs */}
+            <div className="mobile-ctas">
+              <div className="cta-row">
+                <a href="/maus/releases/Maus-1.0.dmg" className="cta-button primary">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  Download Free
+                </a>
+                <a href="https://superpaste.lemonsqueezy.com/buy/5765dfc1-e222-42ad-a04f-5fe4dacc39cb" className="cta-button secondary">
+                  Get Pro – $6.99
+                </a>
+              </div>
+              <div className="cta-subtexts">
+                <span className="cta-subtext">Free forever · 24h history</span>
+                <span className="cta-subtext">One-time · Unlimited history</span>
+              </div>
+            </div>
           </div>
 
-          {/* Right - Demo */}
+          {/* Right - Demo (Desktop only) */}
           <div className="demo-container">
-          <div className="demo">
-  <video autoPlay loop muted playsInline>
-    <source src="/maus-demo.mp4" type="video/mp4" />
-  </video>
-</div>
+            <div className="demo">
+              <video autoPlay loop muted playsInline>
+                <source src="/maus-demo.mp4" type="video/mp4" />
+              </video>
+            </div>
             <p className="mac-only">Requires macOS 14+</p>
           </div>
         </main>
