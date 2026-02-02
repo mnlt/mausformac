@@ -387,22 +387,22 @@ const MausLanding = () => {
               <div className="avatars">
                 <img className="avatar" src="/avatar1.jpeg" alt="" />
                 <img className="avatar" src="/avatar2.jpeg" alt="" />
-                <img className="avatar" src="/avatar3.jpeg" alt="" />
-                <img className="avatar" src="/avatar4.jpeg" alt="" />
-                <img className="avatar" src="/avatar5.jpeg" alt="" />
+                <img className="avatar" src="https://clusterx.io/avatars/ivy.jpeg" alt="" />
+                <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
+                <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
               </div>
               <p className="social-proof-text">Trusted by hundreds of Mac users</p>
             </div>
             
             {/* Mobile Social Proof */}
             <div className="mobile-social-proof">
-              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
+              <p className="social-proof-text">Trusted by dozens of Mac users</p>
               <div className="avatars">
                 <img className="avatar" src="/avatar1.jpeg" alt="" />
                 <img className="avatar" src="/avatar2.jpeg" alt="" />
-                <img className="avatar" src="/avatar3.jpeg" alt="" />
-                <img className="avatar" src="/avatar4.jpeg" alt="" />
-                <img className="avatar" src="/avatar5.jpeg" alt="" />
+                <img className="avatar" src="https://clusterx.io/avatars/ivy.jpeg" alt="" />
+                <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
+                <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
               </div>
             </div>
             
