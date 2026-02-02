@@ -7,6 +7,26 @@
 
     <item>
       <title>Version 1.1.0</title>
+      <pubDate>Tue, 03 Feb 2026 00:08:13 +0000</pubDate>
+      <sparkle:version>1.1.0</sparkle:version>
+      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.1.0</h2>
+        <ul>
+          <li>UPDATE_CHANGELOG_HERE</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://mausformac.com/maus/releases/Maus-1.1.0.dmg"
+        length="2715032"
+        type="application/octet-stream"
+        sparkle:edSignature="uFVp+m91nypUPETfUAyjYDD2raZ3GFdxBeAOcHC8NP6sMk267g6dR8bH+XIzEfB2YjXI4f2LiZcsAvODMxVRBA=="
+      />
+    </item>
+
+    <item>
+      <title>Version 1.1.0</title>
       <pubDate>Mon, 02 Feb 2026 23:30:00 +0000</pubDate>
       <sparkle:version>1.1.0</sparkle:version>
       <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
@@ -20,9 +40,9 @@
       ]]></description>
       <enclosure 
         url="https://www.mausformac.com/maus/releases/Maus-1.1.0.dmg"
-        length="2920193"
+        length="2919849"
         type="application/octet-stream"
-        sparkle:edSignature="WIuy8jpqoERg8kPcRAC37Oh5efMA1ytxV7BebFm0t+pk46ibnoFx0j7hJ+GvZ4gPVn94DU7whA7iOGHmX3g/DQ=="
+        sparkle:edSignature="cjisPVPhx++sM5mAiLlfId3KqwVLlinSHy3TquIS1r9dV1Xz2ZjiYwg453YfuJQ11KLuuF9VeQMRAUVvAkNUAQ=="
       />
     </item>
 
@@ -42,7 +62,7 @@
       ]]></description>
       <enclosure 
         url="https://www.mausformac.com/maus/releases/Maus-1.0.dmg"
-        length="2915654"
+        length="2919849"
         type="application/octet-stream"
         sparkle:edSignature="jBBFYYQjyBrZC0FD/QteYU2sC5T0U7cXZZDGJvMq7wMwAoGnFMmSyCHzd6+OwChIRsW14/KpTSAbGmRRoC9uAA=="
       />
