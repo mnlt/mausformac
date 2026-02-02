@@ -7,7 +7,7 @@
     
     <item>
       <title>Version 1.0</title>
-      <pubDate>Wed, 29 Jan 2026 12:00:00 +0000</pubDate>
+      <pubDate>Sun, 02 Feb 2026 12:00:00 +0000</pubDate>
       <sparkle:version>1</sparkle:version>
       <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
@@ -21,9 +21,9 @@
       ]]></description>
       <enclosure 
         url="https://mausformac.com/maus/releases/Maus-1.0.dmg"
-        length="2920704"
+        length="2915654"
         type="application/octet-stream"
-        sparkle:edSignature="Bdb6OpEb4WDo/Dx3DssSoLnyqlUkE+St38A+b4rcPoC7vOOxq1laqpB6wZ0puJ2XIlbSclZ81yXQ13g6XZtrDA=="
+        sparkle:edSignature="jBBFYYQjyBrZC0FD/QteYU2sC5T0U7cXZZDGJvMq7wMwAoGnFMmSyCHzd6+OwChIRsW14/KpTSAbGmRRoC9uAA=="
       />
     </item>
   </channel>
