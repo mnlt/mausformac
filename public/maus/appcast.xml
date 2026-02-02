@@ -1,98 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
-
   <channel>
-
     <title>Maus Updates</title>
-
     <link>https://mausformac.com/maus/appcast.xml</link>
-
     <language>en</language>
 
     <item>
-
-      <title>Version 1.1.0</title>
-
-      <pubDate>Mon, 03 Feb 2026 00:15:00 +0000</pubDate>
-
-      <sparkle:version>1.1.0</sparkle:version>
-
-      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
-
+      <title>Version 1.1.1</title>
+      <pubDate>Mon, 03 Feb 2026 00:55:00 +0000</pubDate>
+      <sparkle:version>1.1.1</sparkle:version>
+      <sparkle:shortVersionString>1.1.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
-
       <description><![CDATA[
-
-        <h2>What's New in 1.1.0</h2>
-
+        <h2>What's New in 1.1.1</h2>
         <ul>
-
-          <li><strong>New:</strong> Cmd+Click to open Maus instantly (enable in Menu Bar → Features) — thanks <a href="https://reddit.com/u/jss1977">u/jss1977</a> for the suggestion!</li>
-
-          <li><strong>Fixed:</strong> ESC key now properly closes the Maus window — thanks <a href="https://reddit.com/u/busuta">u/busuta</a> for reporting!</li>
-
+          <li>Test update</li>
         </ul>
-
       ]]></description>
-
       <enclosure 
-
-        url="https://www.mausformac.com/maus/releases/Maus-1.1.0.dmg"
-
-        length="2921761"
-
+        url="https://www.mausformac.com/maus/releases/Maus-1.1.1.dmg"
+        length="2919951"
         type="application/octet-stream"
-
-        sparkle:edSignature="eSfVWI8Sso4evzUoIonVB3uPtoyuh4mnWkNhugEx327qmTYEsYrovz2tmZxAw5ObGrx445OpzZW1kZb8fMdFAg=="
-
+        sparkle:edSignature="01N6LcNm+l6q7sqvo2CZ4QLnzJ+J8P/73jG2/ILOa32wVWlCkal+Up6Nc6LDVTFxIfa1oTs8keRhovUJvBfxAA=="
       />
-
     </item>
 
     <item>
-
-      <title>Version 1.0</title>
-
-      <pubDate>Sun, 02 Feb 2026 12:00:00 +0000</pubDate>
-
-      <sparkle:version>1</sparkle:version>
-
-      <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
-
+      <title>Version 1.1.0</title>
+      <pubDate>Mon, 03 Feb 2026 00:15:00 +0000</pubDate>
+      <sparkle:version>1.1.0</sparkle:version>
+      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
-
       <description><![CDATA[
-
-        <h2>Initial Release</h2>
-
+        <h2>What's New in 1.1.0</h2>
         <ul>
-
-          <li>Clipboard history</li>
-
-          <li>Pin favorites</li>
-
-          <li>Quick paste with Cmd+Shift+V</li>
-
+          <li><strong>New:</strong> Cmd+Click to open Maus instantly - thanks u/jss1977!</li>
+          <li><strong>Fixed:</strong> ESC key now properly closes the Maus window - thanks u/busuta!</li>
         </ul>
-
       ]]></description>
-
       <enclosure 
-
-        url="https://www.mausformac.com/maus/releases/Maus-1.0.dmg"
-
-        length="2915697"
-
+        url="https://www.mausformac.com/maus/releases/Maus-1.1.0.dmg"
+        length="2921761"
         type="application/octet-stream"
-
-        sparkle:edSignature="jBBFYYQjyBrZC0FD/QteYU2sC5T0U7cXZZDGJvMq7wMwAoGnFMmSyCHzd6+OwChIRsW14/KpTSAbGmRRoC9uAA=="
-
+        sparkle:edSignature="eSfVWI8Sso4evzUoIonVB3uPtoyuh4mnWkNhugEx327qmTYEsYrovz2tmZxAw5ObGrx445OpzZW1kZb8fMdFAg=="
       />
-
     </item>
 
+    <item>
+      <title>Version 1.0</title>
+      <pubDate>Sun, 02 Feb 2026 12:00:00 +0000</pubDate>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>Initial Release</h2>
+        <ul>
+          <li>Clipboard history</li>
+          <li>Pin favorites</li>
+          <li>Quick paste with Cmd+Shift+V</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.0.dmg"
+        length="2915697"
+        type="application/octet-stream"
+        sparkle:edSignature="jBBFYYQjyBrZC0FD/QteYU2sC5T0U7cXZZDGJvMq7wMwAoGnFMmSyCHzd6+OwChIRsW14/KpTSAbGmRRoC9uAA=="
+      />
+    </item>
   </channel>
-
 </rss>
-
