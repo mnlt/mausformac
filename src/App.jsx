@@ -374,10 +374,11 @@ const MausLanding = () => {
               </div>
               
               <div className="cta-group">
-                <a href="https://superpaste.lemonsqueezy.com/buy/5765dfc1-e222-42ad-a04f-5fe4dacc39cb" className="cta-button secondary">
+              <a href="https://mausformac.lemonsqueezy.com/checkout/buy/42cc1b94-fb4d-42ef-b79c-74d78d5c25bc" className="cta-button secondary disabled" style={{opacity: 0.5, pointerEvents: 'none'}}>
                   Get Pro – $6.99
                 </a>
-                <span className="cta-subtext">One-time · Unlimited history</span>
+                {/* <span className="cta-subtext">One-time · Unlimited history</span> */}
+                <span className="cta-subtext">COMING SOON</span>
               </div>
             </div>
             
@@ -424,13 +425,14 @@ const MausLanding = () => {
                   </svg>
                   Download Free
                 </a>
-                <a href="https://superpaste.lemonsqueezy.com/buy/5765dfc1-e222-42ad-a04f-5fe4dacc39cb" className="cta-button secondary">
+                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/42cc1b94-fb4d-42ef-b79c-74d78d5c25bc" className="cta-button secondary disabled" style={{opacity: 0.5, pointerEvents: 'none'}}>
                   Get Pro – $6.99
                 </a>
               </div>
               <div className="cta-subtexts">
                 <span className="cta-subtext">Free forever · 24h history</span>
-                <span className="cta-subtext">One-time · Unlimited history</span>
+                {/* <span className="cta-subtext">One-time · Unlimited history</span> */}
+                <span className="cta-subtext">COMING SOON</span>
               </div>
             </div>
           </div>
