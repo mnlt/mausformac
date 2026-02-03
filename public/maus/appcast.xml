@@ -6,6 +6,51 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.2.3</title>
+      <pubDate>mar., 03 feb. 2026 21:30:57 +0000</pubDate>
+      <sparkle:version>1.2.3</sparkle:version>
+      <sparkle:shortVersionString>1.2.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.2.3</h2>
+        <ul>
+          <li>Preview customization: Toggle visibility of pin, rename, delete buttons in preview action bar. Shortcuts still work when hidden.</li>
+          <li>“Show</li>
+          <li>preview</li>
+          <li>toggle:</li>
+          <li>Disable</li>
+          <li>preview</li>
+          <li>window</li>
+          <li>on</li>
+          <li>hover</li>
+          <li>entirely</li>
+          <li>for</li>
+          <li>keyboard-only</li>
+          <li>workflow.”</li>
+          <li>“Text</li>
+          <li>and</li>
+          <li>Links</li>
+          <li>are</li>
+          <li>now</li>
+          <li>editable</li>
+          <li>-</li>
+          <li>double-click</li>
+          <li>on</li>
+          <li>preview.”</li>
+          <li>Image detection priority: Images copied from Safari now save as images instead of URLs.</li>
+          <li>File image preview: Image files copied from Finder now show the actual image in preview.</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.2.3.dmg"
+        length="3045241"
+        type="application/octet-stream"
+        sparkle:edSignature="WpyUmfXfMbwpw++ckjsrhmhM3yxn2wtqgooI4CZhSSFblaGDYKrcet8yhP1U6hBgHdprPoSobRH8Wds2cqC6Cw=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.2.2</title>
       <pubDate>mar., 03 feb. 2026 21:11:34 +0000</pubDate>
       <sparkle:version>1.2.2</sparkle:version>
