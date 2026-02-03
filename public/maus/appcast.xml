@@ -6,6 +6,30 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.2.0</title>
+      <pubDate>mar., 03 feb. 2026 10:15:26 +0000</pubDate>
+      <sparkle:version>1.2.0</sparkle:version>
+      <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.2.0</h2>
+        <ul>
+          <li>New: Preferences window with customizable shortcuts</li>
+          <li>New: Custom keyboard shortcut support</li>
+          <li>New: Configurable Key+Click modifier</li>
+          <li>New: Configurable Double-tap modifier</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.2.0.dmg"
+        length="2988802"
+        type="application/octet-stream"
+        sparkle:edSignature="RYa6BJl9hX6TMjQe9cOFEsym6ogItieM756+R6eeZ4eEoBBdXixgkN9JRJxRLA0aPZe6n2+1yVW22DtEtcQACg=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.1.2</title>
       <pubDate>Mon, 03 Feb 2026 09:20:00 +0000</pubDate>
       <sparkle:version>1.1.2</sparkle:version>
