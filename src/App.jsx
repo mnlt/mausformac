@@ -391,7 +391,7 @@ const MausLanding = () => {
                 <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
                 <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
               </div>
-              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
+              <p className="social-proof-text">Trusted by dozens of Mac users</p>
             </div>
             
             {/* Mobile Social Proof */}
