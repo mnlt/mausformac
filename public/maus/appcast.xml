@@ -14,7 +14,7 @@
       <description><![CDATA[
         <h2>What's New in 1.1.1</h2>
         <ul>
-          <li>Test update</li>
+          <li><strong>New:</strong> Cmd+Click to open Maus instantly - thanks u/jss1977!</li><li><strong>Fixed:</strong> ESC key now properly closes the Maus window - thanks u/busuta!</li>
         </ul>
       ]]></description>
       <enclosure 
