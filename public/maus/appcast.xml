@@ -6,6 +6,28 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.2.1</title>
+      <pubDate>mar., 03 feb. 2026 20:04:55 +0000</pubDate>
+      <sparkle:version>1.2.1</sparkle:version>
+      <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.2.1</h2>
+        <ul>
+          <li>Window position preference: Choose where Maus opens (top-right, top-left, bottom-right, bottom-left)</li>
+          <li>Edit content on preview: Double-click text preview to edit full content. ⌘+Enter or click outside saves, ESC cancels. Standard shortcuts (⌘+Z/X/C/V/A) supported during editing.</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.2.1.dmg"
+        length="3035079"
+        type="application/octet-stream"
+        sparkle:edSignature="xFy+vf7H+KCI7/FeRzq1DNqSY2QVUvOXlvQkkKeIyLPMwQj2HOx7KGkZdmB2r+owVKDnzVrWdOt8dxz37sYUAw=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.2.0</title>
       <pubDate>mar., 03 feb. 2026 10:15:26 +0000</pubDate>
       <sparkle:version>1.2.0</sparkle:version>
