@@ -6,6 +6,27 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.1.2</title>
+      <pubDate>Mon, 03 Feb 2026 09:20:00 +0000</pubDate>
+      <sparkle:version>1.1.2</sparkle:version>
+      <sparkle:shortVersionString>1.1.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.1.2</h2>
+        <ul>
+          <li>Stability improvements</li>
+          <li>Minor bug fixes</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.1.2.dmg"
+        length="2919340"
+        type="application/octet-stream"
+        sparkle:edSignature="J+DCu8e33pRB0xAheizAeGt/Tvbs3Op2Y8mE/up1VEIKTO0MgO6jIYjKv/xcm8NfPeLa1ZJl/IQyO5f9KQWTCw=="
+      />
+    </item>
+
+    <item>
       <title>Version 1.1.1</title>
       <pubDate>Mon, 03 Feb 2026 00:55:00 +0000</pubDate>
       <sparkle:version>1.1.1</sparkle:version>
@@ -14,7 +35,8 @@
       <description><![CDATA[
         <h2>What's New in 1.1.1</h2>
         <ul>
-          <li><strong>New:</strong> Cmd+Click to open Maus instantly - thanks u/jss1977!</li><li><strong>Fixed:</strong> ESC key now properly closes the Maus window - thanks u/busuta!</li>
+          <li><strong>New:</strong> Cmd+Click to open Maus instantly - thanks u/jss1977!</li>
+          <li><strong>Fixed:</strong> ESC key now properly closes the Maus window - thanks u/busuta!</li>
         </ul>
       ]]></description>
       <enclosure 
