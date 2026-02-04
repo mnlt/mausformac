@@ -6,6 +6,27 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.3.1</title>
+      <pubDate>mié., 04 feb. 2026 09:45:47 +0000</pubDate>
+      <sparkle:version>1.3.1</sparkle:version>
+      <sparkle:shortVersionString>1.3.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.3.1</h2>
+        <ul>
+          <li>Bug fixing for Safari</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.3.1.dmg"
+        length="3075290"
+        type="application/octet-stream"
+        sparkle:edSignature="qtdskw6d8IBieG+9G1XaCUHmWaTitt3svpWDHDeOU+dMIFaV/s1/ueeI+zs/M3/KOlBsLbBHyuddkuqiSSvXCg=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.3.0</title>
       <pubDate>mié., 04 feb. 2026 09:37:13 +0000</pubDate>
       <sparkle:version>1.3.0</sparkle:version>
