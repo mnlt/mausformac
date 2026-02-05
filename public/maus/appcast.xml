@@ -6,6 +6,28 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.4.4</title>
+      <pubDate>jue., 05 feb. 2026 23:09:18 +0000</pubDate>
+      <sparkle:version>1.4.4</sparkle:version>
+      <sparkle:shortVersionString>1.4.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.4.4</h2>
+        <ul>
+          <li>Improved the new feature to exclude apps from clipboard monitoring (e.g. 1Password)</li>
+          <li>Improved keyboard navigation (up/down arrows to navigate items, right/left to show/hide preview, Enter to paste)</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.4.4.dmg"
+        length="3155792"
+        type="application/octet-stream"
+        sparkle:edSignature="wjvs5Pa9YriRwjwjtyRKwdQ6Z2zpACSx8menSK6tZO0YAp2U4QcP+kgZ2eybobwsoHXieYT85cRT/ZNz/evhBA=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.4.3</title>
       <pubDate>jue., 05 feb. 2026 14:35:29 +0000</pubDate>
       <sparkle:version>1.4.3</sparkle:version>
