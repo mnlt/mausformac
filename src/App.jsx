@@ -374,7 +374,7 @@ const MausLanding = () => {
               </div>
               
               <div className="cta-group">
-              <a href="https://mausformac.lemonsqueezy.com/checkout/buy/42cc1b94-fb4d-42ef-b79c-74d78d5c25bc" className="cta-button secondary">
+              <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
                   Get Pro – $6.99
                 </a>
                 <span className="cta-subtext">One-time · Unlimited history</span>
@@ -424,7 +424,7 @@ const MausLanding = () => {
                   </svg>
                   Download Free
                 </a>
-                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/42cc1b94-fb4d-42ef-b79c-74d78d5c25bc" className="cta-button secondary">
+                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
                   Get Pro – $6.99
                 </a>
               </div>
