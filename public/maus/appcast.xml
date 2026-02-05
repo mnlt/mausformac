@@ -6,6 +6,28 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.4.2</title>
+      <pubDate>jue., 05 feb. 2026 13:01:02 +0000</pubDate>
+      <sparkle:version>1.4.2</sparkle:version>
+      <sparkle:shortVersionString>1.4.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.4.2</h2>
+        <ul>
+          <li>Keyboard navigation: arrow keys to browse items, Enter to paste, Right/Left to show/hide preview</li>
+          <li>Fixed window not appearing on external monitors</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.4.2.dmg"
+        length="3137141"
+        type="application/octet-stream"
+        sparkle:edSignature="q7clLHiBas0Svw0pEaXUSLAE3k6ltW+IO2au6JQj+daw8ZjeyVHMHccWpYbZiMp4Vt31a3fCcAL0C5WIPCUhCA=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.4.1</title>
       <pubDate>jue., 05 feb. 2026 11:05:33 +0000</pubDate>
       <sparkle:version>1.4.1</sparkle:version>
