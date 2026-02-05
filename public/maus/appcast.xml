@@ -6,6 +6,27 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.4.1</title>
+      <pubDate>jue., 05 feb. 2026 11:05:33 +0000</pubDate>
+      <sparkle:version>1.4.1</sparkle:version>
+      <sparkle:shortVersionString>1.4.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.4.1</h2>
+        <ul>
+          <li>pro version update</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.4.1.dmg"
+        length="3136258"
+        type="application/octet-stream"
+        sparkle:edSignature="ojznwZRgnQKYhPkEcx7bw3faHWPfrrvvGEZATDTmzY5r4Fg7Zg82TIWlHwI7MBj2QwbVb0BImOKfsOpuCI4eCQ=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.4.0</title>
       <pubDate>jue., 05 feb. 2026 10:55:09 +0000</pubDate>
       <sparkle:version>1.4.0</sparkle:version>
