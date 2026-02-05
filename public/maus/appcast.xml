@@ -6,6 +6,27 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.4.3</title>
+      <pubDate>jue., 05 feb. 2026 14:35:29 +0000</pubDate>
+      <sparkle:version>1.4.3</sparkle:version>
+      <sparkle:shortVersionString>1.4.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.4.3</h2>
+        <ul>
+          <li>Exclude apps from clipboard monitoring (Menu bar -> preferences -> Excluded Apps)</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.4.3.dmg"
+        length="3152505"
+        type="application/octet-stream"
+        sparkle:edSignature="t6jUkSuUlHJYpXw0mz+PABpZzPepkHfpwTE7kiQGSvqjLVR6KQOtvFTtqZgahe+XtDMUB7TKsiXnpMK6jbeKBg=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.4.2</title>
       <pubDate>jue., 05 feb. 2026 13:01:02 +0000</pubDate>
       <sparkle:version>1.4.2</sparkle:version>
