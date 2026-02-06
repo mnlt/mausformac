@@ -7,6 +7,27 @@
 
     <item>
       <title>Version 1.4.4</title>
+      <pubDate>vie., 06 feb. 2026 09:30:21 +0000</pubDate>
+      <sparkle:version>1.4.4</sparkle:version>
+      <sparkle:shortVersionString>1.4.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.4.4</h2>
+        <ul>
+          <li>Added 'Launch at login' option in Preferences (enabled by default)</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.4.4.dmg"
+        length="3160669"
+        type="application/octet-stream"
+        sparkle:edSignature="+QG6G1UEKTDT5fN3Tp/gTcXdFO6KN8AJkRZRalNz6+5qo3rSx0Fd+LcbUde2ZNySAQBO6YizbpJ+PTFSfDOTCg=="
+      />
+    </item>
+
+
+    <item>
+      <title>Version 1.4.4</title>
       <pubDate>jue., 05 feb. 2026 23:09:18 +0000</pubDate>
       <sparkle:version>1.4.4</sparkle:version>
       <sparkle:shortVersionString>1.4.4</sparkle:shortVersionString>
