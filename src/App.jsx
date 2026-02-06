@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rat } from 'lucide-react';
+import { Rat, Star } from 'lucide-react';
 
 const MausLanding = () => {
   return (
@@ -56,7 +56,7 @@ const MausLanding = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 40px;
+          padding: 80px;
           gap: 80px;
         }
         
@@ -339,6 +339,52 @@ const MausLanding = () => {
             display: none;
           }
         }
+        
+        /* Featured Testimonials */
+        .featured-testimonials {
+          padding: 32px 24px 0;
+        }
+        
+        .testimonials-row {
+          display: flex;
+          justify-content: center;
+          gap: 32px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+        
+        .featured-testimonial {
+          text-align: center;
+          flex: 1;
+          max-width: 320px;
+        }
+        
+        .stars {
+          display: flex;
+          justify-content: center;
+          gap: 4px;
+          margin-bottom: 12px;
+        }
+        
+        .stars svg {
+          width: 18px;
+          height: 18px;
+          fill: #facc15;
+          color: #facc15;
+        }
+        
+        .featured-quote {
+          font-size: 15px;
+          color: #666;
+          font-style: italic;
+          line-height: 1.5;
+        }
+        
+        @media (max-width: 900px) {
+          .featured-testimonial.desktop-only {
+            display: none;
+          }
+        }
       `}</style>
 
       <div className="container">
@@ -350,7 +396,37 @@ const MausLanding = () => {
             </div>
             <span className="logo-text">Maus</span>
           </div>
-        </header>
+          </header>
+        
+        {/* Featured Testimonials */}
+        <div className="featured-testimonials">
+          <div className="testimonials-row">
+            <div className="featured-testimonial">
+              <div className="stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="featured-quote">
+                "While PastePal is elegant, Maus is crazy quick and straightforward."
+              </p>
+            </div>
+            <div className="featured-testimonial desktop-only">
+              <div className="stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="featured-quote">
+                "No, seriously, don't compare this app to others. I've tried tons of clipboard managers over the years, and this app became my favorite."
+              </p>
+            </div>
+            <div className="featured-testimonial desktop-only">
+              <div className="stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="featured-quote">
+                "I freaking love this, well done!"
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Main */}
         <main className="main">
@@ -370,7 +446,7 @@ const MausLanding = () => {
                   </svg>
                   Download Free
                 </a>
-                <span className="cta-subtext">Free forever · 24h history</span>
+                <span className="cta-subtext">Free forever</span>
               </div>
               
               <div className="cta-group">
