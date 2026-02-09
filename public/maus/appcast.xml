@@ -6,6 +6,27 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.5.3</title>
+      <pubDate>Mon, 09 Feb 2026 13:03:53 +0000</pubDate>
+      <sparkle:version>1.5.3</sparkle:version>
+      <sparkle:shortVersionString>1.5.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.5.3</h2>
+        <ul>
+          <li>Pro themes (Dracula, Solarized Light), redesigned Preferences, window position, launch at login, exclude apps, shortcuts</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.5.3.dmg"
+        length="3274911"
+        type="application/octet-stream"
+        sparkle:edSignature="TqPjrTzsZQ3Yi3Ntzxz2I6YgwU4qRk4mLL7E4V3qboW5oJ6c20xgmUqmpS9ePwowSvFzSdG1nRMbbsyFj3NTDg=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.5.2</title>
       <pubDate>Mon, 09 Feb 2026 12:56:51 +0000</pubDate>
       <sparkle:version>1.5.2</sparkle:version>
