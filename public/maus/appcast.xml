@@ -6,6 +6,27 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.5.4</title>
+      <pubDate>Wed, 11 Feb 2026 21:39:12 +0000</pubDate>
+      <sparkle:version>1.5.4</sparkle:version>
+      <sparkle:shortVersionString>1.5.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.5.4</h2>
+        <ul>
+          <li>Cmd+A now selects all text in search field</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.5.4.dmg"
+        length="3275440"
+        type="application/octet-stream"
+        sparkle:edSignature="f4LxhKUP9R6sGuI8pP/oeS8cfWKz6dR1KYVzaHapo1adV9WBiR1DQEFR9NmGYzMj/W3Y0ZPFCZ9Uys9MDYs0Ag=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.5.3</title>
       <pubDate>Mon, 09 Feb 2026 13:03:53 +0000</pubDate>
       <sparkle:version>1.5.3</sparkle:version>
