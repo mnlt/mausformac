@@ -75,12 +75,58 @@
         <p><strong>Does it work with Terminal and iTerm2?</strong> Yes. Maus works everywhere, including Terminal, iTerm2, and SSH sessions.</p>
         <p><strong>How is Maus different from Raycast, Maccy, or Paste?</strong> Maus appears exactly where your cursor is. No fixed window, no menubar popup. Open, find, paste, gone.</p>
 
-        <p><a href="/maus/releases/Maus-1.5.4.dmg">Download Maus for Mac - Free</a></p>
+        <p><a href="/maus/releases/Maus-1.5.3.dmg">Download Maus for Mac - Free</a></p>
         <p>Requires macOS 14+</p>
         <p>Contact: manu@mausformac.com</p>
       </div>
     </noscript>
 
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Web Analytics -->
+    <script>
+    (function() {
+      var SB = 'https://nxvibvrbhcdwhhefzyej.supabase.co/rest/v1/web_events';
+      var KEY = 'sb_publishable_pxHcqc5STbL6lmqspvlOcQ_ztal72Lw';
+
+      var params = new URLSearchParams(window.location.search);
+      var base = {
+        referrer: document.referrer || null,
+        utm_source: params.get('utm_source'),
+        utm_campaign: params.get('utm_campaign'),
+        device: window.innerWidth < 768 ? 'mobile' : 'desktop',
+        path: window.location.pathname
+      };
+
+      function send(event, cta) {
+        var data = Object.assign({}, base, { event: event, cta: cta || null });
+        fetch(SB, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': KEY,
+            'Authorization': 'Bearer ' + KEY,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(data)
+        }).catch(function() {});
+      }
+
+      // Track page view
+      send('page_view');
+
+      // Track CTA clicks
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a');
+        if (!link) return;
+        var href = link.getAttribute('href') || '';
+        if (href.indexOf('.dmg') !== -1) {
+          send('cta_click', 'download_free');
+        } else if (href.indexOf('lemonsqueezy') !== -1) {
+          send('cta_click', 'get_pro');
+        }
+      });
+    })();
+    </script>
   </body>
 </html>
