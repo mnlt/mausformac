@@ -6,6 +6,27 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.5.5</title>
+      <pubDate>Fri, 13 Feb 2026 10:58:09 +0000</pubDate>
+      <sparkle:version>1.5.5</sparkle:version>
+      <sparkle:shortVersionString>1.5.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.5.5</h2>
+        <ul>
+          <li>Improved multipaste queue discoverability: new queue icon in preview, Cmd+Enter to select items from keyboard, clearer feedback badges. Split disabled by default (enable in Preferences). Fixed preview icon colors across themes.</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.5.5.dmg"
+        length="3288442"
+        type="application/octet-stream"
+        sparkle:edSignature="CAdAaoz3PeIrRMIXBEfR2TJx/sUkYt+9gyOqXdHZv1FdqoYOkZdPq7pXpKqIkIkRykJq5wQTcScJifQqz6rlCA=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.5.4</title>
       <pubDate>Wed, 11 Feb 2026 21:39:12 +0000</pubDate>
       <sparkle:version>1.5.4</sparkle:version>
