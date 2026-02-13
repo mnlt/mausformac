@@ -179,34 +179,40 @@ const MausLanding = () => {
           color: #888;
         }
         
-        .social-proof {
+        /* ============================================ */
+        /* SOCIAL PROOF SECTION                         */
+        /* ============================================ */
+        .social-proof-section {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 12px;
-          margin-top: 24px;
+          gap: 14px;
+          padding: 40px 24px 0;
         }
         
-        .avatars {
+        .social-proof-avatars {
           display: flex;
           align-items: center;
         }
         
-        .avatar {
-          width: 32px;
-          height: 32px;
+        .social-avatar {
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
-          border: 2px solid white;
-          margin-left: -8px;
+          border: 2.5px solid white;
+          margin-left: -10px;
           object-fit: cover;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
-        .avatar:first-child {
+        .social-avatar:first-child {
           margin-left: 0;
         }
         
-        .social-proof-text {
-          font-size: 13px;
+        .social-proof-label {
+          font-size: 15px;
           color: #888;
+          font-weight: 500;
         }
         
         .mac-only {
@@ -242,7 +248,6 @@ const MausLanding = () => {
         }
         
         /* Mobile elements - hidden on desktop */
-        .mobile-social-proof,
         .mobile-demo,
         .mobile-ctas,
         .mobile-mac-notice {
@@ -473,7 +478,6 @@ const MausLanding = () => {
           padding: 80px 40px;
           max-width: 640px;
           margin: 0 auto;
-          width: 100%;
         }
 
         .faq-section-title {
@@ -528,7 +532,6 @@ const MausLanding = () => {
           color: #666;
           line-height: 1.6;
           padding-bottom: 20px;
-          word-break: break-word;
         }
 
         /* ============================================ */
@@ -647,22 +650,6 @@ const MausLanding = () => {
           
           .demo-container {
             display: none;
-          }
-          
-          .mobile-social-proof {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 32px;
-          }
-          
-          .mobile-social-proof .social-proof-text {
-            order: -1;
-          }
-          
-          .mobile-social-proof .avatars {
-            justify-content: center;
           }
           
           .mobile-demo {
@@ -816,7 +803,7 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="featured-quote">
-                "So damn useful. An unexpected productivity hack."
+                "So damn useful. An unexpected productivity hack"
               </p>
             </div>
             <div className="featured-testimonial desktop-only">
@@ -824,7 +811,7 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="featured-quote">
-                "I've used Alfred, Raycast, PastePal and Maccy. None come close."
+                "I've used Alfred, Raycast, PastePal and Maccy. None come close"
               </p>
             </div>
             <div className="featured-testimonial desktop-only">
@@ -832,7 +819,7 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="featured-quote">
-                "I've tried tons of clipboard managers. This one became my favorite."
+                "I've tried tons of clipboard managers. This one became my favorite"
               </p>
             </div>
           </div>
@@ -859,29 +846,7 @@ const MausLanding = () => {
               <span className="cta-meta">Free forever · No account · Takes 10 seconds</span>
             </div>
             
-            {/* Desktop Social Proof */}
-            <div className="social-proof desktop-only">
-              <div className="avatars">
-                <img className="avatar" src="/avatar1.jpeg" alt="" />
-                <img className="avatar" src="/avatar2.jpeg" alt="" />
-                <img className="avatar" src="https://clusterx.io/avatars/ivy.jpeg" alt="" />
-                <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
-                <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
-              </div>
-              <p className="social-proof-text">Loved by Mac users</p>
-            </div>
-            
-            {/* Mobile Social Proof */}
-            <div className="mobile-social-proof">
-              <p className="social-proof-text">Loved by Mac users</p>
-              <div className="avatars">
-                <img className="avatar" src="/avatar1.jpeg" alt="" />
-                <img className="avatar" src="/avatar2.jpeg" alt="" />
-                <img className="avatar" src="https://clusterx.io/avatars/ivy.jpeg" alt="" />
-                <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
-                <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
-              </div>
-            </div>
+
             
             {/* Mobile Demo */}
             <div className="mobile-demo">
@@ -895,12 +860,12 @@ const MausLanding = () => {
             {/* Mobile: Mac notice + copy link */}
             <div className="mobile-ctas">
               <div className="mobile-mac-notice">
-                <p>Maus is a Desktop Mac app.</p>
+                <p>Maus is a Mac app.</p>
               </div>
               <button className="cta-button primary" onClick={handleCopyLink} style={{width: '100%', maxWidth: 280}}>
                 {linkCopied ? '✓ Link copied!' : 'Copy download link'}
               </button>
-              <span className="cta-meta">Send it to yourself · Free forever · macOS 14+</span>
+              <span className="cta-meta">Paste it on your Mac · Free forever · macOS 14+</span>
             </div>
           </div>
 
@@ -914,6 +879,20 @@ const MausLanding = () => {
             <p className="mac-only">Requires macOS 14+</p>
           </div>
         </main>
+
+        {/* ============================================ */}
+        {/* SOCIAL PROOF                                 */}
+        {/* ============================================ */}
+        {/* <section className="social-proof-section">
+          <div className="social-proof-avatars">
+            <img className="social-avatar" src="/avatar1.jpeg" alt="" />
+            <img className="social-avatar" src="/avatar2.jpeg" alt="" />
+            <img className="social-avatar" src="https://clusterx.io/avatars/ivy.jpeg" alt="" />
+            <img className="social-avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
+            <img className="social-avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
+          </div>
+          <p className="social-proof-label">Loved by hundreds Mac users</p>
+        </section> */}
 
         {/* ============================================ */}
         {/* THE PROBLEM                                  */}
@@ -1173,7 +1152,7 @@ const MausLanding = () => {
           {[
             {
               q: "Is Maus really free?",
-              a: "Yes. Every feature is free — search, pins, multipaste, edit, split, keyboard navigation, exclude apps, all of it. The only limit is 24 hours of history, which is enough for most people. Pro ($6.99 once) removes that limit and adds custom themes. No trial, no expiration, no account."
+              a: "Yes. Every feature is free - search, pins, multipaste, edit, split, keyboard navigation, exclude apps, all of it. The only limit is 24 hours of history, which is enough for most people. Pro ($6.99 once) removes that limit and adds custom themes. No trial, no expiration, no account."
             },
             {
               q: "What does Pro add?",
