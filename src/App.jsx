@@ -478,6 +478,7 @@ const MausLanding = () => {
           padding: 80px 40px;
           max-width: 640px;
           margin: 0 auto;
+          width: 100%;
         }
 
         .faq-section-title {
@@ -532,6 +533,7 @@ const MausLanding = () => {
           color: #666;
           line-height: 1.6;
           padding-bottom: 20px;
+          word-break: break-word;
         }
 
         /* ============================================ */
