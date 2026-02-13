@@ -3,9 +3,49 @@ import { Rat, Star, ChevronDown, MousePointerClick, Settings2, Search, Keyboard,
 
 const MausLanding = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText('https://www.mausformac.com').then(() => {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 3000);
+    }).catch(() => {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = 'https://www.mausformac.com';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 3000);
+    });
+
+    // Track the copy event
+    const SB = 'https://nxvibvrbhcdwhhefzyej.supabase.co/rest/v1/web_events';
+    const KEY = 'sb_publishable_pxHcqc5STbL6lmqspvlOcQ_ztal72Lw';
+    fetch(SB, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': KEY,
+        'Authorization': 'Bearer ' + KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        event: 'cta_click',
+        cta: 'copy_link_mobile',
+        referrer: document.referrer || null,
+        utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+        utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
+        device: 'mobile',
+        path: window.location.pathname
+      })
+    }).catch(() => {});
   };
 
   return (
@@ -68,7 +108,7 @@ const MausLanding = () => {
         
         /* Left side - Hero */
         .hero {
-          max-width: 400px;
+          max-width: 440px;
         }
         
         .hero h1 {
@@ -84,20 +124,15 @@ const MausLanding = () => {
           font-size: 18px;
           color: #666;
           margin-bottom: 32px;
+          line-height: 1.5;
         }
         
-        /* CTAs */
-        .ctas {
-          display: flex;
-          gap: 16px;
-          margin-bottom: 12px;
-        }
-        
-        .cta-group {
+        /* Single primary CTA */
+        .hero-cta {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 8px;
+          gap: 10px;
+          margin-bottom: 12px;
         }
         
         .cta-button {
@@ -116,22 +151,22 @@ const MausLanding = () => {
         }
         
         .cta-button.primary {
+          background: #1a1a1a;
+          color: #ffffff;
+        }
+        
+        .cta-button.primary:hover {
+          background: #333;
+        }
+        
+        .cta-button.secondary {
           background: #ffffff;
           color: #1a1a1a;
           border: 1px solid #e0e0e0;
         }
         
-        .cta-button.primary:hover {
-          background: #f5f5f5;
-        }
-        
-        .cta-button.secondary {
-          background: #1a1a1a;
-          color: #ffffff;
-        }
-        
         .cta-button.secondary:hover {
-          background: #333;
+          background: #f5f5f5;
         }
         
         .cta-button svg {
@@ -139,7 +174,7 @@ const MausLanding = () => {
           height: 16px;
         }
         
-        .cta-subtext {
+        .cta-meta {
           font-size: 13px;
           color: #888;
         }
@@ -206,15 +241,11 @@ const MausLanding = () => {
           object-fit: cover;
         }
         
-        .demo-placeholder {
-          color: #bbb;
-          font-size: 14px;
-        }
-        
         /* Mobile elements - hidden on desktop */
         .mobile-social-proof,
         .mobile-demo,
-        .mobile-ctas {
+        .mobile-ctas,
+        .mobile-mac-notice {
           display: none;
         }
         
@@ -351,11 +382,6 @@ const MausLanding = () => {
           object-fit: cover;
         }
 
-        .feature-visual-placeholder {
-          color: #ccc;
-          font-size: 13px;
-        }
-
         .feature-title {
           font-family: 'Inter', sans-serif;
           font-size: 17px;
@@ -441,129 +467,13 @@ const MausLanding = () => {
         }
 
         /* ============================================ */
-        /* FREE VS PRO SECTION                         */
-        /* ============================================ */
-        .pricing-section {
-          padding: 80px 40px;
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .pricing-section-title {
-          font-family: 'Inter', sans-serif;
-          font-size: 36px;
-          font-weight: 600;
-          letter-spacing: -1.2px;
-          text-align: center;
-          margin-bottom: 12px;
-          color: #1a1a1a;
-        }
-
-        .pricing-subtitle {
-          text-align: center;
-          font-size: 17px;
-          color: #666;
-          margin-bottom: 48px;
-        }
-
-        .pricing-cards {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 24px;
-        }
-
-        .pricing-card {
-          border: 1px solid #eee;
-          border-radius: 16px;
-          padding: 36px;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .pricing-card.pro {
-          border: 2px solid #1a1a1a;
-          position: relative;
-        }
-
-        .pricing-card-badge {
-          position: absolute;
-          top: -13px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: #1a1a1a;
-          color: #fff;
-          font-size: 12px;
-          font-weight: 600;
-          padding: 4px 16px;
-          border-radius: 20px;
-          letter-spacing: 0.5px;
-          text-transform: uppercase;
-        }
-
-        .pricing-card-name {
-          font-family: 'Inter', sans-serif;
-          font-size: 22px;
-          font-weight: 600;
-          letter-spacing: -0.5px;
-          margin-bottom: 4px;
-        }
-
-        .pricing-card-price {
-          font-family: 'Inter', sans-serif;
-          font-size: 40px;
-          font-weight: 700;
-          letter-spacing: -2px;
-          margin-bottom: 4px;
-          line-height: 1;
-        }
-
-        .pricing-card-price-note {
-          font-size: 14px;
-          color: #888;
-          margin-bottom: 28px;
-        }
-
-        .pricing-card-features {
-          list-style: none;
-          padding: 0;
-          margin: 0 0 32px;
-          flex: 1;
-        }
-
-        .pricing-card-features li {
-          font-size: 15px;
-          color: #444;
-          padding: 8px 0;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .pricing-card-features li::before {
-          content: '✓';
-          font-weight: 600;
-          color: #1a1a1a;
-          font-size: 14px;
-        }
-
-        .pricing-card-features li.highlight {
-          font-weight: 500;
-          color: #1a1a1a;
-        }
-
-        .pricing-card .cta-button {
-          width: 100%;
-          text-align: center;
-          justify-content: center;
-        }
-
-        /* ============================================ */
         /* FAQ SECTION                                  */
         /* ============================================ */
         .faq-section {
           padding: 80px 40px;
           max-width: 640px;
           margin: 0 auto;
+          width: 100%;
         }
 
         .faq-section-title {
@@ -618,6 +528,7 @@ const MausLanding = () => {
           color: #666;
           line-height: 1.6;
           padding-bottom: 20px;
+          word-break: break-word;
         }
 
         /* ============================================ */
@@ -642,13 +553,19 @@ const MausLanding = () => {
           font-size: 17px;
           color: #666;
           margin-bottom: 32px;
+          line-height: 1.5;
         }
 
         .footer-cta-buttons {
           display: flex;
           justify-content: center;
           gap: 16px;
-          margin-bottom: 32px;
+          margin-bottom: 12px;
+        }
+        
+        .footer-cta-meta {
+          font-size: 13px;
+          color: #999;
         }
 
         /* ============================================ */
@@ -683,6 +600,22 @@ const MausLanding = () => {
 
         .footer-links a:hover {
           color: #666;
+        }
+
+        /* ============================================ */
+        /* MOBILE COPY LINK                              */
+        /* ============================================ */
+        
+        .mobile-mac-notice {
+          text-align: center;
+          padding: 0;
+        }
+        
+        .mobile-mac-notice p {
+          font-size: 14px;
+          color: #666;
+          font-weight: 500;
+          line-height: 1.5;
         }
 
         /* ============================================ */
@@ -753,30 +686,9 @@ const MausLanding = () => {
             width: 100%;
           }
           
-          .mobile-ctas .cta-row {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            width: 100%;
-            justify-content: center;
-          }
-          
-          .mobile-ctas .cta-button {
-            flex: 1;
-            max-width: 180px;
-          }
-          
-          .mobile-ctas .cta-subtexts {
-            display: flex;
-            gap: 16px;
-            width: 100%;
-            justify-content: center;
-          }
-          
-          .mobile-ctas .cta-subtext {
-            flex: 1;
-            max-width: 180px;
-            text-align: center;
+          .mobile-mac-notice {
+            display: block;
+            margin-bottom: 8px;
           }
 
           /* Problem section mobile */
@@ -820,19 +732,6 @@ const MausLanding = () => {
             grid-template-columns: 1fr;
           }
 
-          /* Pricing mobile */
-          .pricing-section {
-            padding: 60px 24px;
-          }
-
-          .pricing-section-title {
-            font-size: 28px;
-          }
-
-          .pricing-cards {
-            grid-template-columns: 1fr;
-          }
-
           /* FAQ mobile */
           .faq-section {
             padding: 60px 24px;
@@ -855,6 +754,18 @@ const MausLanding = () => {
             flex-direction: column;
             align-items: center;
           }
+          
+          /* Hide desktop footer CTA download on mobile */
+          .footer-cta-desktop {
+            display: none;
+          }
+          
+          .footer-cta-mobile {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+          }
 
           /* Footer mobile */
           .footer {
@@ -865,36 +776,19 @@ const MausLanding = () => {
           }
         }
         
+        @media (min-width: 901px) {
+          .footer-cta-mobile {
+            display: none;
+          }
+        }
+        
         @media (max-width: 500px) {
           .header {
             padding: 16px 20px;
           }
-          
-          .mobile-ctas .cta-row {
-            flex-direction: column;
-            gap: 12px;
-          }
-          
-          .mobile-ctas .cta-button {
-            width: 220px;
-            max-width: none;
-          }
-          
-          .mobile-ctas .cta-subtexts {
-            flex-direction: column;
-            gap: 0;
-          }
-          
-          .mobile-ctas .cta-subtext {
-            max-width: none;
-          }
-          
-          .mobile-ctas .cta-subtexts .cta-subtext:last-child {
-            margin-top: -4px;
-          }
 
-          .mobile-ctas .cta-subtexts {
-            display: none;
+          .features-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
@@ -922,7 +816,7 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="featured-quote">
-                "I ended up purchasing it because it is so damn useful. An unexpected productivity hack."
+                "So damn useful. An unexpected productivity hack."
               </p>
             </div>
             <div className="featured-testimonial desktop-only">
@@ -930,7 +824,7 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="featured-quote">
-                "I've used Alfred, Raycast, PastePal and Maccy. None come close to how quick-and-easy Maus is."
+                "I've used Alfred, Raycast, PastePal and Maccy. None come close."
               </p>
             </div>
             <div className="featured-testimonial desktop-only">
@@ -938,7 +832,7 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="featured-quote">
-                "Don't compare this app to others. I've tried tons of clipboard managers. This one became my favorite."
+                "I've tried tons of clipboard managers. This one became my favorite."
               </p>
             </div>
           </div>
@@ -949,29 +843,20 @@ const MausLanding = () => {
         {/* ============================================ */}
         <main className="main">
           <div className="hero">
-            <h1>Your copy-paste memory. Always handy.</h1>
+            <h1>A clipboard manager that opens where your cursor is.</h1>
             <p className="subhero">
-              A clipboard manager that lives where your cursor is.
+              Your clipboard only remembers one thing. Maus remembers everything - and appears right where you need it.
             </p>
             
-            {/* Desktop CTAs */}
-            <div className="ctas desktop-only">
-              <div className="cta-group">
-                <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                  </svg>
-                  Download Free
-                </a>
-                <span className="cta-subtext">Free forever</span>
-              </div>
-              
-              <div className="cta-group">
-                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
-                  Get Pro – $6.99
-                </a>
-                <span className="cta-subtext">One-time · Unlimited history</span>
-              </div>
+            {/* Desktop: Single primary CTA */}
+            <div className="hero-cta desktop-only">
+              <a href="/maus/releases/Maus-1.5.5.dmg" className="cta-button primary">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                Download Free for Mac
+              </a>
+              <span className="cta-meta">Free forever · No account · Takes 10 seconds</span>
             </div>
             
             {/* Desktop Social Proof */}
@@ -983,12 +868,12 @@ const MausLanding = () => {
                 <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
                 <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
               </div>
-              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
+              <p className="social-proof-text">Loved by Mac users</p>
             </div>
             
             {/* Mobile Social Proof */}
             <div className="mobile-social-proof">
-              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
+              <p className="social-proof-text">Loved by Mac users</p>
               <div className="avatars">
                 <img className="avatar" src="/avatar1.jpeg" alt="" />
                 <img className="avatar" src="/avatar2.jpeg" alt="" />
@@ -1005,31 +890,22 @@ const MausLanding = () => {
                   <source src="/maus-demo.mp4" type="video/mp4" />
                 </video>
               </div>
-              <p className="mac-only">Requires macOS 14+</p>
             </div>
             
-            {/* Mobile CTAs */}
+            {/* Mobile: Mac notice + copy link */}
             <div className="mobile-ctas">
-              <div className="cta-row">
-                <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                  </svg>
-                  Download Free
-                </a>
-                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
-                  Get Pro – $6.99
-                </a>
+              <div className="mobile-mac-notice">
+                <p>Maus is a Desktop Mac app.</p>
               </div>
-              <div className="cta-subtexts">
-                <span className="cta-subtext">Free forever · 24h history</span>
-                <span className="cta-subtext">One-time · Unlimited history</span>
-              </div>
+              <button className="cta-button primary" onClick={handleCopyLink} style={{width: '100%', maxWidth: 280}}>
+                {linkCopied ? '✓ Link copied!' : 'Copy download link'}
+              </button>
+              <span className="cta-meta">Send it to yourself · Free forever · macOS 14+</span>
             </div>
           </div>
 
           {/* Right - Demo (Desktop only) */}
-          <div className="demo-container">
+          <div className="demo-container desktop-only">
             <div className="demo">
               <video autoPlay loop muted playsInline>
                 <source src="/maus-demo.mp4" type="video/mp4" />
@@ -1067,80 +943,80 @@ const MausLanding = () => {
                 <MousePointerClick size={32} color="#1a1a1a" />
               </div>
               <h3 className="feature-title">Opens where your cursor is</h3>
-              <p className="feature-desc">Hit ⌘⇧V and Maus appears right next to your cursor. No dock, no menubar hunting. Paste and keep working.</p>
+              <p className="feature-desc">Hit ⌘⇧V and Maus appears right next to your cursor. No dock, no menubar hunting. Open, find, paste, gone.</p>
             </div>
 
-            {/* Feature 2: Multiple ways to open */}
+            {/* Feature 2: Multiple open methods */}
             <div className="feature-card">
               <div className="feature-visual">
                 {/* <img src="/features/open-methods.gif" alt="Multiple ways to open Maus" /> */}
                 <Settings2 size={32} color="#1a1a1a" />
               </div>
               <h3 className="feature-title">Open it your way</h3>
-              <p className="feature-desc">Keyboard shortcut, custom hotkey, Key+Click, or double-tap a modifier. Pick what works for you - everything is customizable.</p>
+              <p className="feature-desc">Keyboard shortcut, custom hotkey, Key+Click, or double-tap a modifier. Whatever feels natural.</p>
             </div>
 
             {/* Feature 3: Window position */}
             <div className="feature-card">
               <div className="feature-visual">
-                {/* <img src="/features/window-position.gif" alt="Configurable window position" /> */}
+                {/* <img src="/features/position.gif" alt="Configurable window position" /> */}
                 <Move size={32} color="#1a1a1a" />
               </div>
-              <h3 className="feature-title">Window position, your call</h3>
-              <p className="feature-desc">Opens above-right of your cursor by default. Prefer above-left, below-left, or below-right? One setting, done.</p>
+              <h3 className="feature-title">Configurable window position</h3>
+              <p className="feature-desc">Set it to appear above or below, left or right. Up to you.</p>
             </div>
 
-            {/* Feature 3: Search */}
+            {/* Feature 4: Search */}
             <div className="feature-card">
               <div className="feature-visual">
-                {/* <img src="/features/search.gif" alt="Searching clipboard history in Maus" /> */}
+                {/* <img src="/features/search.gif" alt="Searching clipboard history" /> */}
                 <Search size={32} color="#1a1a1a" />
               </div>
               <h3 className="feature-title">Find anything, instantly</h3>
-              <p className="feature-desc">Type to search across your entire clipboard history. Filter by text, links, images, or code. It's all there.</p>
+              <p className="feature-desc">Search across your entire clipboard history. Screenshots, file paths, hex colors, URLs - all searchable.</p>
             </div>
 
-            {/* Feature 4: Keyboard-first */}
+            {/* Feature 5: Keyboard friendly */}
             <div className="feature-card">
               <div className="feature-visual">
-                {/* <img src="/features/keyboard.gif" alt="Using Maus with keyboard only" /> */}
+                {/* <img src="/features/keyboard.gif" alt="Keyboard navigation in Maus" /> */}
                 <Keyboard size={32} color="#1a1a1a" />
               </div>
               <h3 className="feature-title">100% keyboard-friendly</h3>
-              <p className="feature-desc">Navigate, search, paste, pin, delete - all without touching the mouse. Every feature has a shortcut. Visual chrome can be turned off entirely.</p>
+              <p className="feature-desc">Navigate, search, paste, pin, delete - without touching the mouse. Everything has a shortcut.</p>
             </div>
 
-            {/* Feature 5: Multipaste queue */}
+            {/* Feature 6: Multipaste */}
             <div className="feature-card">
               <div className="feature-visual">
-                {/* <img src="/features/multipaste.gif" alt="Multipaste queue in Maus" /> */}
+                {/* <img src="/features/multipaste.gif" alt="Pasting multiple items in sequence" /> */}
                 <ListChecks size={32} color="#1a1a1a" />
               </div>
               <h3 className="feature-title">Paste multiple items in sequence</h3>
-              <p className="feature-desc">⌘+Click to select several items, hit Enter, and paste them one by one in order. Perfect for filling forms or moving data.</p>
+              <p className="feature-desc">Cmd+Click to select multiple items. Hit Enter and they paste one by one, in order.</p>
             </div>
 
-            {/* Feature 6: Pins */}
+            {/* Feature 7: Pin */}
             <div className="feature-card">
               <div className="feature-visual">
-                {/* <img src="/features/pins.gif" alt="Pinning items in Maus" /> */}
+                {/* <img src="/features/pin.gif" alt="Pinning important clips" /> */}
                 <Pin size={32} color="#1a1a1a" />
               </div>
               <h3 className="feature-title">Pin what matters</h3>
-              <p className="feature-desc">Keep your most-used snippets, templates, and links permanently pinned at the top. Always one shortcut away.</p>
+              <p className="feature-desc">Keep your most-used snippets permanently pinned at the top. Always one keystroke away.</p>
             </div>
 
-            {/* Feature 7: All content types */}
+            {/* Feature 8: All content types */}
             <div className="feature-card">
               <div className="feature-visual">
-                {/* <img src="/features/content-types.gif" alt="Text, images, links, files and colors in Maus" /> */}
+                {/* <img src="/features/types.gif" alt="Text, images, files, links, colors" /> */}
                 <Layers size={32} color="#1a1a1a" />
               </div>
               <h3 className="feature-title">Text, images, links, files, colors</h3>
-              <p className="feature-desc">Maus captures everything you copy - not just text. Screenshots, file paths, hex colors, URLs - all searchable.</p>
+              <p className="feature-desc">Maus captures everything you copy with rich previews. Not just plain text.</p>
             </div>
 
-            {/* Feature 8: Split */}
+            {/* Feature 9: Split */}
             <div className="feature-card">
               <div className="feature-visual">
                 {/* <img src="/features/split.gif" alt="Splitting text into individual clips" /> */}
@@ -1150,7 +1026,7 @@ const MausLanding = () => {
               <p className="feature-desc">Paste a list, a CSV, or a chunk of text and split it into individual clips. Then paste each one separately.</p>
             </div>
 
-            {/* Feature 9: Edit */}
+            {/* Feature 10: Edit */}
             <div className="feature-card">
               <div className="feature-visual">
                 {/* <img src="/features/edit.gif" alt="Editing clipboard content in Maus" /> */}
@@ -1160,7 +1036,7 @@ const MausLanding = () => {
               <p className="feature-desc">Double-click the preview to edit any text or link. Fix a typo, tweak a snippet, save. No need to copy it again.</p>
             </div>
 
-            {/* Feature 9: Privacy */}
+            {/* Feature 11: Privacy */}
             <div className="feature-card">
               <div className="feature-visual">
                 {/* <img src="/features/privacy.gif" alt="Excluding apps from Maus" /> */}
@@ -1170,7 +1046,7 @@ const MausLanding = () => {
               <p className="feature-desc">Everything stays on your Mac. No cloud, no sync, no account. Exclude sensitive apps like 1Password from being recorded.</p>
             </div>
 
-            {/* Feature 10: Themes */}
+            {/* Feature 12: Themes */}
             <div className="feature-card">
               <div className="feature-visual">
                 {/* <img src="/features/themes.gif" alt="Light, Dark, Dracula and Solarized themes" /> */}
@@ -1204,24 +1080,6 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="testimonial-text">
-                "I ended up purchasing it because it is so damn useful. The singular feature to pop up where my cursor already is totally sold me. This app is such an unexpected productivity hack."
-              </p>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-stars">
-                <Star /><Star /><Star /><Star /><Star />
-              </div>
-              <p className="testimonial-text">
-                "I've used PasteApp, Alfred, Raycast, Droppy, PastePal and Maccy. But neither of those come close in terms of how quick-and-easy it is. Maus' tiny window is feature rich and not as interruptive."
-              </p>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-stars">
-                <Star /><Star /><Star /><Star /><Star />
-              </div>
-              <p className="testimonial-text">
                 "While PastePal is elegant, Maus is crazy quick and straightforward."
               </p>
             </div>
@@ -1231,25 +1089,7 @@ const MausLanding = () => {
                 <Star /><Star /><Star /><Star /><Star />
               </div>
               <p className="testimonial-text">
-                "Works like a dream for me, shortcut with Key+Click is super intelligent and smooth."
-              </p>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-stars">
-                <Star /><Star /><Star /><Star /><Star />
-              </div>
-              <p className="testimonial-text">
                 "I freaking love this, well done!"
-              </p>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-stars">
-                <Star /><Star /><Star /><Star /><Star />
-              </div>
-              <p className="testimonial-text">
-                "This is so much fun (love the brand/name too!)"
               </p>
             </div>
 
@@ -1271,6 +1111,42 @@ const MausLanding = () => {
               </p>
             </div>
 
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="testimonial-text">
+                "This is so much fun (love the brand/name too!)"
+              </p>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="testimonial-text">
+                "I ended up purchasing it because it is so damn useful. The singular feature to pop up where my cursor already is totally sold me."
+              </p>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="testimonial-text">
+                "I've used PasteApp, Alfred, Raycast, Droppy, PastePal and Maccy. None come close in terms of how quick-and-easy it is."
+              </p>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="testimonial-text">
+                "Works like a dream for me, shortcut with Key+Click is super intelligent and smooth."
+              </p>
+            </div>
+
             {/* 
               PARA AÑADIR MÁS TESTIMONIOS: 
               Copia este bloque y reemplaza texto:
@@ -1289,60 +1165,6 @@ const MausLanding = () => {
         </section>
 
         {/* ============================================ */}
-        {/* FREE VS PRO                                  */}
-        {/* ============================================ */}
-        <section className="pricing-section">
-          <h2 className="pricing-section-title">Free vs Pro</h2>
-          <p className="pricing-subtitle">Free is generous. Pro is a no-brainer.</p>
-
-          <div className="pricing-cards">
-            {/* FREE card */}
-            <div className="pricing-card">
-              <h3 className="pricing-card-name">Free</h3>
-              <p className="pricing-card-price">$0</p>
-              <p className="pricing-card-price-note">Free forever, no account needed</p>
-              <ul className="pricing-card-features">
-                <li className="highlight">24 hours of clipboard history</li>
-                <li>Search across all clips</li>
-                <li>Pin your favorites</li>
-                <li>Images, files, links, colors</li>
-                <li>Multipaste queue</li>
-                <li>Split text into clips</li>
-                <li>Rename clips</li>
-                <li>Edit clip content</li>
-                <li>Exclude sensitive apps</li>
-                <li>Multiple ways to open Maus</li>
-                <li>Full keyboard navigation</li>
-                <li>Light &amp; Dark mode</li>
-              </ul>
-              <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
-                <svg viewBox="0 0 24 24" fill="currentColor" style={{width: 16, height: 16}}>
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                Download Free
-              </a>
-            </div>
-
-            {/* PRO card */}
-            <div className="pricing-card pro">
-              <span className="pricing-card-badge">Most popular</span>
-              <h3 className="pricing-card-name">Pro</h3>
-              <p className="pricing-card-price">$6.99</p>
-              <p className="pricing-card-price-note">One-time payment · Updates forever</p>
-              <ul className="pricing-card-features">
-                <li>Everything in Free, plus:</li>
-                <li className="highlight">Unlimited clipboard history</li>
-                <li className="highlight">Dracula, Solarized Light &amp; more themes coming</li>
-
-              </ul>
-              <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
-                Get Pro – $6.99
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================ */}
         {/* FAQ                                          */}
         {/* ============================================ */}
         <section className="faq-section">
@@ -1351,11 +1173,11 @@ const MausLanding = () => {
           {[
             {
               q: "Is Maus really free?",
-              a: "Yes. The free version includes every feature - search, pins, multipaste, all content types, keyboard navigation, customizable shortcuts, exclude apps, and more. The only differences with Pro are the history limit (24h vs unlimited) and custom themes. No trial, no expiration, no account."
+              a: "Yes. Every feature is free — search, pins, multipaste, edit, split, keyboard navigation, exclude apps, all of it. The only limit is 24 hours of history, which is enough for most people. Pro ($6.99 once) removes that limit and adds custom themes. No trial, no expiration, no account."
             },
             {
-              q: "Does it have dark mode?",
-              a: "Yes. Maus follows your system appearance automatically. It also has Pro themes like Dracula and Solarized Light, with more coming."
+              q: "What does Pro add?",
+              a: "Unlimited clipboard history (instead of 24h) and custom themes like Dracula and Solarized Light. One-time payment of $6.99, updates forever. You can upgrade from inside the app whenever you're ready."
             },
             {
               q: "Does my data leave my Mac?",
@@ -1371,23 +1193,15 @@ const MausLanding = () => {
             },
             {
               q: "Can I use it with keyboard only?",
-              a: "Absolutely. Arrows to navigate, Enter to paste, Cmd+P to pin, Cmd+R to rename, Cmd+Click for multipaste. Every feature has a shortcut. You can also hide all visual UI elements for a minimal, keyboard-only workflow."
-            },
-            {
-              q: "I already use Cmd+Shift+V in another app. Can I change the shortcut?",
-              a: "Yes. You can set any custom keyboard shortcut, use Key+Click (like Cmd+Click), or double-tap a modifier key. Whatever feels natural to you."
-            },
-            {
-              q: "Can I edit what I've copied?",
-              a: "Yes. Double-click the preview to edit text or links. Click outside or Cmd+Enter to save, Escape to discard."
+              a: "Absolutely. Arrows to navigate, Enter to paste, Cmd+P to pin, Cmd+R to rename, Cmd+Click for multipaste. Every feature has a shortcut."
             },
             {
               q: "How is Maus different from Raycast, Maccy, or Paste?",
-              a: "Maus appears exactly where your cursor is - no fixed window, no menubar popup. It's designed to be faster: open, find, paste, gone. It captures images, files, colors, and links with rich previews, and the multipaste queue lets you paste items in sequence."
+              a: "Maus appears exactly where your cursor is - no fixed window, no menubar popup. It's designed to be faster: open, find, paste, gone."
             },
             {
-              q: "Can I hide the menu bar icon?",
-              a: "Yes. You can hide it from Preferences. If you need to access Preferences again, you can always get there from the Maus main window."
+              q: "Can I change the keyboard shortcut?",
+              a: "Yes. You can set any custom keyboard shortcut, use Key+Click (like Cmd+Click), or double-tap a modifier key. Whatever feels natural to you."
             },
             /* 
               PARA AÑADIR MÁS PREGUNTAS:
@@ -1416,17 +1230,29 @@ const MausLanding = () => {
         {/* ============================================ */}
         <section className="footer-cta-section">
           <h2 className="footer-cta-headline">Stop losing what you copy.</h2>
-          <p className="footer-cta-sub">Free forever. Pro for $6.99 once. No subscription.</p>
-          <div className="footer-cta-buttons">
-            <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
-              <svg viewBox="0 0 24 24" fill="currentColor" style={{width: 16, height: 16}}>
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-              </svg>
-              Download Free
-            </a>
-            <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
-            One-time payment – $6.99
-            </a>
+          <p className="footer-cta-sub">
+            Free with every feature · 24h history covers most people. Want unlimited history? Pro is $6.99 once.
+          </p>
+          
+          {/* Desktop footer CTA */}
+          <div className="footer-cta-desktop">
+            <div className="footer-cta-buttons">
+              <a href="/maus/releases/Maus-1.5.5.dmg" className="cta-button primary">
+                <svg viewBox="0 0 24 24" fill="currentColor" style={{width: 16, height: 16}}>
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                Download Free for Mac
+              </a>
+            </div>
+            <p className="footer-cta-meta">No account needed · Takes 10 seconds · macOS 14+</p>
+          </div>
+          
+          {/* Mobile footer CTA */}
+          <div className="footer-cta-mobile">
+            <button className="cta-button primary" onClick={handleCopyLink} style={{width: '100%', maxWidth: 280}}>
+              {linkCopied ? '✓ Link copied!' : 'Copy download link'}
+            </button>
+            <p className="footer-cta-meta">Paste it on your Mac · macOS 14+</p>
           </div>
         </section>
 
