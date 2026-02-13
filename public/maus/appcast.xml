@@ -6,6 +6,29 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.5.6</title>
+      <pubDate>Fri, 13 Feb 2026 15:20:21 +0000</pubDate>
+      <sparkle:version>1.5.6</sparkle:version>
+      <sparkle:shortVersionString>1.5.6</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 1.5.6</h2>
+        <ul>
+          <li>Preview window now has a consistent height for all text content</li>
+          <li>Unified font size across text and code previews</li>
+          <li>Fixed Shift+Cmd+Arrow keys not selecting text in the search field</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-1.5.6.dmg"
+        length="3305267"
+        type="application/octet-stream"
+        sparkle:edSignature="bpddVoTVNowKtLLM35C6/lYEitmOa9D4p6SSllYDY3Kl9JbeUtqailODsxLQlpAmVXYLqJM+q6m3Aj2mCKf1Dw=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 1.5.5</title>
       <pubDate>Fri, 13 Feb 2026 10:58:09 +0000</pubDate>
       <sparkle:version>1.5.5</sparkle:version>
