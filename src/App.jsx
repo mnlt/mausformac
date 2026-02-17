@@ -1102,7 +1102,7 @@ const MausLanding = () => {
             </div>
             <span className="logo-text">Maus</span>
           </div>
-          <a href="/maus/releases/Maus-1.5.5.dmg" className="header-cta desktop-only">
+          <a href="/maus/releases/Maus-2.0.0.dmg" className="header-cta desktop-only">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d={applePath}/></svg>
             <span>Download Free for Mac</span>
           </a>
@@ -1119,7 +1119,7 @@ const MausLanding = () => {
             </p>
             
             <div className="hero-cta desktop-only">
-              <a href="/maus/releases/Maus-1.5.5.dmg" className="cta-button primary">
+              <a href="/maus/releases/Maus-2.0.0.dmg" className="cta-button primary">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d={applePath}/></svg>
                 Download Free for Mac
               </a>
@@ -1384,7 +1384,7 @@ const MausLanding = () => {
           {/* Desktop */}
           <div className="footer-cta-desktop">
             <div className="footer-cta-buttons">
-              <a href="/maus/releases/Maus-1.5.5.dmg" className="footer-cta-button">
+              <a href="/maus/releases/Maus-2.0.0.dmg" className="footer-cta-button">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d={applePath}/></svg>
                 Download Free for Mac
               </a>
