@@ -1,109 +1,17 @@
 import React, { useState } from 'react';
-import { Rat, ChevronDown, Star } from 'lucide-react';
+import { Rat, Star, ChevronDown, MousePointerClick, Settings2, Search, Keyboard, ListChecks, Pin, Layers, ShieldCheck, Palette, Scissors, Pencil, Move } from 'lucide-react';
 
 const MausLanding = () => {
+  const [openFaq, setOpenFaq] = useState(null);
 
-  const [linkCopied, setLinkCopied] = useState(false);
-  const [activeAtom, setActiveAtom] = useState(0);
-
-  const ATOMS = [
-    { id: 'customize', label: 'Make it yours', description: "Shortcut, position, theme, features — every detail is yours to tweak. Make Maus feel like it was built for you.", gif: 'customize.gif' },
-    { id: 'history', label: 'Copy paste history', description: "Everything you copy is saved. Open Maus and it's all there — text, images, links, files, colors.", gif: 'history.gif' },
-    { id: 'search', label: 'Search', description: "Type to find anything you've ever copied. The more history you have, the more powerful this gets.", gif: 'search.gif' },
-    { id: 'pin', label: 'Pins', description: "Addresses, API keys, canned replies — pin them and they're always at the top. One shortcut away.", gif: 'pin.gif' },
-    { id: 'queue', label: 'Paste queue', description: 'Select multiple items, hit Enter, and they paste one by one in order. Forms, spreadsheets — done.', gif: 'queue.gif' },
-    { id: 'split', label: 'Split', description: 'Paste a list or CSV and split it into individual clips. Then paste each one wherever it needs to go.', gif: 'split.gif' },
-    { id: 'edit', label: 'Edit', description: 'See the full content before pasting. Fix a typo, tweak a URL — no need to copy again.', gif: 'edit.gif' },
-    { id: 'shortcuts', label: 'Shortcut lovers, welcome', description: 'Navigate, search, paste, pin, delete — all without touching the mouse. Every feature has a shortcut.', gif: 'shortcuts.gif' },
-  ];
-
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText('https://www.mausformac.com').then(() => {
-      setLinkCopied(true);
-      setTimeout(() => setLinkCopied(false), 3000);
-    }).catch(() => {
-      const textArea = document.createElement('textarea');
-      textArea.value = 'https://www.mausformac.com';
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      setLinkCopied(true);
-      setTimeout(() => setLinkCopied(false), 3000);
-    });
-
-    const SB = 'https://nxvibvrbhcdwhhefzyej.supabase.co/rest/v1/web_events';
-    const KEY = 'sb_publishable_pxHcqc5STbL6lmqspvlOcQ_ztal72Lw';
-    fetch(SB, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': KEY,
-        'Authorization': 'Bearer ' + KEY,
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({
-        event: 'cta_click',
-        cta: 'copy_link_mobile',
-        referrer: document.referrer || null,
-        utm_source: new URLSearchParams(window.location.search).get('utm_source'),
-        utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
-        device: 'mobile',
-        path: window.location.pathname
-      })
-    }).catch(() => {});
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
   };
-
-  const applePath = "M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z";
-
-  /* ---------------------------------------------------------- */
-  /* USE CASES DATA                                             */
-  /* ---------------------------------------------------------- */
-  const USE_CASES = [
-    {
-      before: '',
-      keyword: 'Fill forms',
-      after: ' in seconds',
-      sentence: 'Name, email, phone, address — select them in order, hit Enter, done.',
-      features: ['Range select', 'Paste queue'],
-      gif: 'fill-forms.gif',
-      color: '#FF7237',
-    },
-    {
-      before: '',
-      keyword: 'Code',
-      after: ' much faster',
-      sentence: 'That SSH command from last week? That API key? Search, paste, move on.',
-      features: ['Search', 'History'],
-      gif: 'code-faster.gif',
-      color: '#26CB71',
-    },
-    {
-      before: '',
-      keyword: 'Reply',
-      after: ' to emails instantly',
-      sentence: 'Pin your saved replies. Paste, tweak one word, send.',
-      features: ['Pins', 'Edit'],
-      gif: 'reply-instantly.gif',
-      color: '#C3B6FC',
-    },
-    {
-      before: '',
-      keyword: 'Move data',
-      after: ' between apps',
-      sentence: 'Copy a column, split it into clips, paste them one by one wherever.',
-      features: ['Split', 'Paste queue'],
-      gif: 'move-data.gif',
-      color: '#FF7237',
-    },
-  ];
-
-  /* (no highlight effect — clean titles) */
 
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: '#F6F5F4',
+      backgroundColor: '#ffffff',
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
       color: '#1a1a1a',
     }}>
@@ -118,19 +26,11 @@ const MausLanding = () => {
           flex-direction: column;
         }
         
-        /* ============================================ */
-        /* HEADER — sticky                              */
-        /* ============================================ */
+        /* Header */
         .header {
-          position: sticky;
-          top: 0;
-          z-index: 100;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          padding: 14px 40px 14px 56px;
-          background: #F6F5F4;
-          border-bottom: 1px solid #1a1a1a;
+          padding: 20px 40px;
         }
         
         .logo {
@@ -140,10 +40,10 @@ const MausLanding = () => {
         }
         
         .logo-icon {
-          width: 32px;
-          height: 32px;
+          width: 36px;
+          height: 36px;
           background: #1a1a1a;
-          border-radius: 7px;
+          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -151,59 +51,29 @@ const MausLanding = () => {
         
         .logo-text {
           font-family: 'Inter', sans-serif;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 600;
           letter-spacing: -0.3px;
         }
         
-        .header-cta {
-          display: inline-flex;
-          align-items: center;
-          gap: 7px;
-          padding: 9px 18px;
-          border-radius: 8px;
-          font-size: 14px;
-          font-weight: 500;
-          font-family: 'Inter', sans-serif;
-          text-decoration: none;
-          cursor: pointer;
-          border: 2px solid #1a1a1a;
-          background: #C3B6FC;
-          color: #1a1a1a;
-          transition: background 0.15s ease, transform 0.1s ease;
-        }
-        
-        .header-cta:hover {
-          background: #b5a5f7;
-        }
-        
-        .header-cta:active {
-          transform: scale(0.97);
-        }
-        
-        .header-cta svg {
-          width: 14px;
-          height: 14px;
-        }
-        
-        /* ============================================ */
-        /* HERO                                         */
-        /* ============================================ */
+        /* Main content */
         .main {
+          flex: 1;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 80px 40px 16px;
+          padding: 80px;
+          gap: 80px;
         }
         
+        /* Left side - Hero */
         .hero {
-          max-width: 600px;
-          text-align: center;
+          max-width: 400px;
         }
         
         .hero h1 {
           font-family: 'Inter', sans-serif;
-          font-size: 48px;
+          font-size: 44px;
           font-weight: 600;
           letter-spacing: -1.5px;
           line-height: 1.15;
@@ -214,15 +84,20 @@ const MausLanding = () => {
           font-size: 18px;
           color: #666;
           margin-bottom: 32px;
-          line-height: 1.5;
         }
         
-        .hero-cta {
+        /* CTAs */
+        .ctas {
+          display: flex;
+          gap: 16px;
+          margin-bottom: 12px;
+        }
+        
+        .cta-group {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 10px;
-          margin-bottom: 12px;
+          gap: 8px;
         }
         
         .cta-button {
@@ -234,24 +109,29 @@ const MausLanding = () => {
           border-radius: 8px;
           font-size: 15px;
           font-weight: 500;
-          font-family: 'Inter', sans-serif;
           text-decoration: none;
+          transition: all 0.2s ease;
+          border: none;
           cursor: pointer;
-          transition: background 0.15s ease, transform 0.1s ease;
         }
         
         .cta-button.primary {
-          background: #C3B6FC;
+          background: #ffffff;
           color: #1a1a1a;
-          border: 2px solid #1a1a1a;
+          border: 1px solid #e0e0e0;
         }
         
         .cta-button.primary:hover {
-          background: #b5a5f7;
+          background: #f5f5f5;
         }
         
-        .cta-button.primary:active {
-          transform: scale(0.97);
+        .cta-button.secondary {
+          background: #1a1a1a;
+          color: #ffffff;
+        }
+        
+        .cta-button.secondary:hover {
+          background: #333;
         }
         
         .cta-button svg {
@@ -259,135 +139,244 @@ const MausLanding = () => {
           height: 16px;
         }
         
-        .cta-meta {
+        .cta-subtext {
           font-size: 13px;
           color: #888;
-          text-align: center;
         }
-
-        /* ============================================ */
-        /* SPOT VIDEO                                   */
-        /* ============================================ */
-        .spot-section {
-          padding: 20px 40px 0;
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .spot-video {
-          width: 100%;
-          border-radius: 36px;
-          display: block;
-          border: 4px solid #1a1a1a;
-        }
-
-        /* ============================================ */
-        /* USE CASES — dark block                       */
-        /* ============================================ */
-        .usecases-outer {
-          padding: 80px 40px 80px 56px;
-        }
-
-        .usecases-block {
-          max-width: 100%;
-          margin: 0 auto;
-          background: #1a1a1a;
-          border-radius: 60px;
-          padding: 72px 80px;
-          display: flex;
-          flex-direction: column;
-          gap: 80px;
-        }
-
-        .usecases-header {
-          text-align: center;
-          margin-bottom: 8px;
-        }
-
-        .usecases-title {
-          font-family: 'Inter', sans-serif;
-          font-size: 36px;
-          font-weight: 600;
-          letter-spacing: -1.2px;
-          color: #F6F5F4;
-        }
-
-        /* Single use case row */
-        .uc-row {
+        
+        .social-proof {
           display: flex;
           align-items: center;
-          gap: 56px;
+          gap: 12px;
+          margin-top: 24px;
         }
-
-        .uc-row.reverse {
-          flex-direction: row-reverse;
-        }
-
-        .uc-text {
-          flex: 1;
-          min-width: 0;
-        }
-
-        .uc-gif-wrap {
-          flex: 1.2;
-          min-width: 0;
-        }
-
-        .uc-gif-wrap img {
-          width: 100%;
-          height: auto;
-          border-radius: 14px;
-          display: block;
-        }
-
-        /* Feature chips */
-        .uc-chips {
+        
+        .avatars {
           display: flex;
-          flex-wrap: wrap;
-          gap: 0px;
-          margin-bottom: 18px;
+          align-items: center;
         }
-
-        .uc-chip {
-          display: inline-block;
-          padding: 8px 18px;
-          border-radius: 100px;
+        
+        .avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 2px solid white;
+          margin-left: -8px;
+          object-fit: cover;
+        }
+        
+        .avatar:first-child {
+          margin-left: 0;
+        }
+        
+        .social-proof-text {
+          font-size: 13px;
+          color: #888;
+        }
+        
+        .mac-only {
+          font-size: 13px;
+          color: #888;
+          margin-top: 16px;
+          text-align: center;
+        }
+        
+        .demo-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        /* Right side - Demo */
+        .demo {
+          width: 480px;
+          aspect-ratio: 4 / 3;
+          background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        
+        .demo video, .demo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .demo-placeholder {
+          color: #bbb;
+          font-size: 14px;
+        }
+        
+        /* Mobile elements - hidden on desktop */
+        .mobile-social-proof,
+        .mobile-demo,
+        .mobile-ctas {
+          display: none;
+        }
+        
+        /* Featured Testimonials */
+        .featured-testimonials {
+          padding: 32px 24px 0;
+        }
+        
+        .testimonials-row {
+          display: flex;
+          justify-content: center;
+          gap: 32px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+        
+        .featured-testimonial {
+          text-align: center;
+          flex: 1;
+          max-width: 320px;
+        }
+        
+        .stars {
+          display: flex;
+          justify-content: center;
+          gap: 4px;
+          margin-bottom: 12px;
+        }
+        
+        .stars svg {
+          width: 18px;
+          height: 18px;
+          fill: #facc15;
+          color: #facc15;
+        }
+        
+        .featured-quote {
           font-size: 15px;
-          font-weight: 700;
-          font-family: 'Inter', sans-serif;
-          letter-spacing: -0.1px;
+          color: #666;
+          font-style: italic;
+          line-height: 1.5;
         }
 
-        /* Title with organic underline */
-        .uc-title {
+        /* ============================================ */
+        /* PROBLEM SECTION                              */
+        /* ============================================ */
+        .problem-section {
+          padding: 100px 40px 80px;
+          text-align: center;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+
+        .problem-stat {
           font-family: 'Inter', sans-serif;
-          font-size: 30px;
+          font-size: 64px;
+          font-weight: 700;
+          letter-spacing: -3px;
+          line-height: 1;
+          margin-bottom: 20px;
+          color: #1a1a1a;
+        }
+
+        .problem-headline {
+          font-family: 'Inter', sans-serif;
+          font-size: 28px;
           font-weight: 600;
           letter-spacing: -0.8px;
-          line-height: 1.25;
-          color: #F6F5F4;
-          margin-bottom: 14px;
+          line-height: 1.3;
+          margin-bottom: 16px;
+          color: #1a1a1a;
         }
 
-        .uc-sentence {
-          font-size: 16px;
-          color: #999;
-          line-height: 1.55;
-          letter-spacing: -0.1px;
+        .problem-body {
+          font-size: 17px;
+          color: #666;
+          line-height: 1.6;
+          max-width: 500px;
+          margin: 0 auto;
         }
 
         /* ============================================ */
-        /* SOCIAL PROOF                                 */
+        /* FEATURES SECTION                             */
         /* ============================================ */
-        .testimonials-section {
-          padding: 100px 40px;
+        .features-section {
+          padding: 80px 40px;
           max-width: 1100px;
           margin: 0 auto;
         }
 
-        .testimonials-header {
+        .features-section-title {
+          font-family: 'Inter', sans-serif;
+          font-size: 36px;
+          font-weight: 600;
+          letter-spacing: -1.2px;
           text-align: center;
-          margin-bottom: 56px;
+          margin-bottom: 60px;
+          color: #1a1a1a;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 48px 32px;
+          justify-items: center;
+        }
+
+        .features-grid .feature-card {
+          max-width: 100%;
+          width: 100%;
+        }
+
+        .feature-card {
+          text-align: left;
+        }
+
+        .feature-visual {
+          width: 100%;
+          aspect-ratio: 16 / 10;
+          background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+          border-radius: 12px;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          border: 1px solid #f0f0f0;
+        }
+
+        .feature-visual img,
+        .feature-visual video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .feature-visual-placeholder {
+          color: #ccc;
+          font-size: 13px;
+        }
+
+        .feature-title {
+          font-family: 'Inter', sans-serif;
+          font-size: 17px;
+          font-weight: 600;
+          letter-spacing: -0.3px;
+          margin-bottom: 8px;
+          color: #1a1a1a;
+        }
+
+        .feature-desc {
+          font-size: 14px;
+          color: #888;
+          line-height: 1.5;
+        }
+
+        /* ============================================ */
+        /* TESTIMONIALS SECTION                         */
+        /* ============================================ */
+        .testimonials-section {
+          padding: 80px 40px;
+          background: #fafafa;
         }
 
         .testimonials-section-title {
@@ -395,453 +384,282 @@ const MausLanding = () => {
           font-size: 36px;
           font-weight: 600;
           letter-spacing: -1.2px;
+          text-align: center;
+          margin-bottom: 48px;
           color: #1a1a1a;
-          margin-bottom: 24px;
         }
 
-        .testimonials-loved-text {
-          font-size: 15px;
-          font-weight: 500;
-          color: #888;
-          letter-spacing: -0.1px;
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .testimonial-card {
+          background: #ffffff;
+          border-radius: 12px;
+          padding: 28px;
+          border: 1px solid #eee;
+        }
+
+        .testimonial-stars {
+          display: flex;
+          gap: 3px;
           margin-bottom: 14px;
         }
 
-        .testimonials-avatars {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .testimonials-avatars img {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          border: 2.5px solid #F6F5F4;
-          margin-left: -10px;
-          object-fit: cover;
-        }
-
-        .testimonials-avatars img:first-child {
-          margin-left: 0;
-        }
-
-        /* Testimonial items — organic flow */
-        .testimonials-flow {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 32px;
-        }
-
-        .testimonial-item {
-          max-width: 320px;
-          text-align: center;
-        }
-
-        .testimonial-item-stars {
-          display: flex;
-          justify-content: center;
-          gap: 3px;
-          margin-bottom: 12px;
-        }
-
-        .testimonial-item-stars svg {
-          width: 16px;
-          height: 16px;
+        .testimonial-stars svg {
+          width: 15px;
+          height: 15px;
           fill: #facc15;
           color: #facc15;
         }
 
-        .testimonial-item-text {
-          font-family: 'Inter', sans-serif;
-          font-size: 17px;
-          font-weight: 500;
+        .testimonial-text {
+          font-size: 15px;
           color: #444;
-          line-height: 1.55;
-          letter-spacing: -0.2px;
+          line-height: 1.6;
+          font-style: italic;
+          margin-bottom: 16px;
         }
+
+        .testimonial-author {
+          font-size: 13px;
+          color: #999;
+        }
+
+        .testimonial-author a {
+          color: #999;
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+
+        .testimonial-author a:hover {
+          color: #666;
+        }
+
         /* ============================================ */
-        /* FEATURES ATOMIC — dark green block            */
+        /* FREE VS PRO SECTION                         */
         /* ============================================ */
-        .features-section {
-          padding: 0 40px 100px 56px;
+        .pricing-section {
+          padding: 80px 40px;
+          max-width: 900px;
+          margin: 0 auto;
         }
 
-        .features-block {
-          background: #024F46;
-          border-radius: 60px;
-          padding: 72px 64px;
-        }
-
-        .features-header {
-          text-align: center;
-          margin-bottom: 48px;
-        }
-
-        .features-title {
+        .pricing-section-title {
           font-family: 'Inter', sans-serif;
           font-size: 36px;
           font-weight: 600;
           letter-spacing: -1.2px;
-          color: #F6F5F4;
-        }
-
-        .features-chips {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          max-width: 680px;
-          margin: 0 auto 40px;
-          gap: 10px;
-          margin-bottom: 40px;
-        }
-
-        .feature-chip {
-          display: inline-block;
-          padding: 10px 22px;
-          border-radius: 100px;
-          font-size: 15px;
-          font-weight: 700;
-          font-family: 'Inter', sans-serif;
-          letter-spacing: -0.1px;
-          background: #024F46;
-          color: #F6F5F4;
-          border: 4px solid #F6F5F4;
-          cursor: pointer;
-          transition: background 0.15s ease, transform 0.1s ease;
-        }
-
-        .feature-chip:hover {
-          background: rgba(255, 255, 235, 0.1);
-        }
-
-        .feature-chip.active {
-          background: #F6F5F4;
-          color: #024F46;
-        }
-
-        .feature-chip.active-orange {
-          background: #FF7237;
+          text-align: center;
+          margin-bottom: 12px;
           color: #1a1a1a;
-          border-color: #1a1a1a;
         }
 
-        .features-gif-container {
-          width: 100%;
-          max-width: 560px;
-          margin: 0 auto;
+        .pricing-subtitle {
+          text-align: center;
+          font-size: 17px;
+          color: #666;
+          margin-bottom: 48px;
+        }
+
+        .pricing-cards {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+        }
+
+        .pricing-card {
+          border: 1px solid #eee;
           border-radius: 16px;
-          overflow: hidden;
-        }
-
-        .features-gif-container img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        /* Shortcuts cheatsheet (inside features block) */
-        .shortcuts-grid {
-          width: 100%;
-          max-width: 560px;
-          margin: 0 auto;
+          padding: 36px;
           display: flex;
           flex-direction: column;
-          gap: 0;
         }
 
-        .shortcuts-group-title {
-          font-size: 11px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          color: rgba(255, 255, 235, 0.4);
-          padding: 20px 0 8px;
+        .pricing-card.pro {
+          border: 2px solid #1a1a1a;
+          position: relative;
         }
 
-        .shortcuts-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 10px 0;
-          border-bottom: 1px solid rgba(255, 255, 235, 0.1);
-        }
-
-        .shortcuts-row:last-child {
-          border-bottom: none;
-        }
-
-        .shortcuts-label {
-          font-size: 14px;
-          font-weight: 500;
-          color: #FFFFEB;
-        }
-
-        .shortcuts-keys {
-          display: flex;
-          gap: 4px;
-          align-items: center;
-        }
-
-        .shortcuts-kbd {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 26px;
-          height: 26px;
-          padding: 0 7px;
-          border-radius: 5px;
-          background: rgba(255, 255, 235, 0.1);
-          border: 1px solid rgba(255, 255, 235, 0.2);
-          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
-          font-family: 'SF Mono', 'Menlo', monospace;
+        .pricing-card-badge {
+          position: absolute;
+          top: -13px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #1a1a1a;
+          color: #fff;
           font-size: 12px;
           font-weight: 600;
-          color: #FFFFEB;
+          padding: 4px 16px;
+          border-radius: 20px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+        }
+
+        .pricing-card-name {
+          font-family: 'Inter', sans-serif;
+          font-size: 22px;
+          font-weight: 600;
+          letter-spacing: -0.5px;
+          margin-bottom: 4px;
+        }
+
+        .pricing-card-price {
+          font-family: 'Inter', sans-serif;
+          font-size: 40px;
+          font-weight: 700;
+          letter-spacing: -2px;
+          margin-bottom: 4px;
           line-height: 1;
         }
 
-        .features-description {
-          text-align: center;
-          max-width: 560px;
-          margin: 24px auto 0;
-          font-size: 17px;
+        .pricing-card-price-note {
+          font-size: 14px;
+          color: #888;
+          margin-bottom: 28px;
+        }
+
+        .pricing-card-features {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 32px;
+          flex: 1;
+        }
+
+        .pricing-card-features li {
+          font-size: 15px;
+          color: #444;
+          padding: 8px 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .pricing-card-features li::before {
+          content: '✓';
+          font-weight: 600;
+          color: #1a1a1a;
+          font-size: 14px;
+        }
+
+        .pricing-card-features li.highlight {
           font-weight: 500;
-          color: rgba(255, 255, 235, 0.65);
-          line-height: 1.55;
-          letter-spacing: -0.2px;
+          color: #1a1a1a;
+        }
+
+        .pricing-card .cta-button {
+          width: 100%;
+          text-align: center;
+          justify-content: center;
         }
 
         /* ============================================ */
-        /* PRICING                                      */
+        /* FAQ SECTION                                  */
         /* ============================================ */
-        .pricing-section {
-          padding: 100px 40px;
-          max-width: 680px;
+        .faq-section {
+          padding: 80px 40px;
+          max-width: 640px;
           margin: 0 auto;
         }
 
-        .pricing-title {
+        .faq-section-title {
           font-family: 'Inter', sans-serif;
-          font-size: 42px;
+          font-size: 36px;
           font-weight: 600;
-          letter-spacing: -1.5px;
-          color: #1a1a1a;
-          margin-bottom: 40px;
-          line-height: 1.2;
+          letter-spacing: -1.2px;
           text-align: center;
-        }
-
-        .pricing-free-chip {
-          display: inline-block;
-          padding: 4px 20px;
-          border-radius: 100px;
-          background: #C3B6FC;
-          border: 2px solid #1a1a1a;
-          transform: rotate(-2deg);
-          margin: 0 2px;
-        }
-
-        .pricing-content {
-          border: 4px solid #1a1a1a;
-          border-radius: 20px;
-          padding: 40px;
-        }
-
-        .pricing-check-list {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          padding: 0;
-          margin: 0;
-        }
-
-        .pricing-check-item {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          font-family: 'Inter', sans-serif;
-          font-size: 17px;
-          font-weight: 500;
-          color: #1a1a1a;
-          letter-spacing: -0.2px;
-        }
-
-        .pricing-check-icon {
-          width: 22px;
-          height: 22px;
-          border-radius: 50%;
-          background: #26CB71;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .pricing-check-icon svg {
-          width: 13px;
-          height: 13px;
-          stroke: white;
-          stroke-width: 3;
-          fill: none;
-        }
-
-        .pricing-body {
-          font-family: 'Inter', sans-serif;
-          font-size: 17px;
-          font-weight: 400;
-          color: #555;
-          line-height: 1.7;
-          letter-spacing: -0.2px;
-          margin-bottom: 20px;
-        }
-
-        .pricing-body strong {
-          font-weight: 600;
+          margin-bottom: 48px;
           color: #1a1a1a;
         }
 
-        .pricing-divider {
+        .faq-item {
+          border-bottom: 1px solid #eee;
+        }
+
+        .faq-question {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 0;
+          cursor: pointer;
+          background: none;
           border: none;
-          border-top: 4px solid #1a1a1a;
-          margin: 28px 0;
-        }
-
-        .pricing-pro-label {
+          width: 100%;
+          text-align: left;
           font-family: 'Inter', sans-serif;
           font-size: 16px;
           font-weight: 500;
-          color: #888;
-          margin-bottom: 16px;
+          color: #1a1a1a;
           letter-spacing: -0.2px;
         }
 
-        .pricing-pro {
-          font-family: 'Inter', sans-serif;
-          font-size: 16px;
-          color: #888;
-          line-height: 1.65;
+        .faq-question:hover {
+          color: #444;
         }
 
-        .pricing-pro strong {
-          font-weight: 600;
-          color: #1a1a1a;
+        .faq-question svg {
+          width: 18px;
+          height: 18px;
+          color: #999;
+          flex-shrink: 0;
+          transition: transform 0.2s ease;
+        }
+
+        .faq-question svg.open {
+          transform: rotate(180deg);
+        }
+
+        .faq-answer {
+          font-size: 15px;
+          color: #666;
+          line-height: 1.6;
+          padding-bottom: 20px;
         }
 
         /* ============================================ */
-        /* FOOTER CTA — full width, final push          */
+        /* FOOTER CTA                                   */
         /* ============================================ */
         .footer-cta-section {
-          background: #1a1a1a;
-          margin: 0 40px 0 56px;
-          border-radius: 60px 60px 0 0;
           padding: 80px 40px;
           text-align: center;
+          background: #fafafa;
         }
 
         .footer-cta-headline {
           font-family: 'Inter', sans-serif;
-          font-size: 42px;
+          font-size: 36px;
           font-weight: 600;
-          letter-spacing: -1.5px;
-          color: #F6F5F4;
-          margin-bottom: 12px;
-          line-height: 1.15;
+          letter-spacing: -1.2px;
+          margin-bottom: 16px;
+          color: #1a1a1a;
         }
 
         .footer-cta-sub {
           font-size: 17px;
-          color: #999;
-          margin-bottom: 36px;
-          line-height: 1.5;
-          letter-spacing: -0.2px;
+          color: #666;
+          margin-bottom: 32px;
         }
 
         .footer-cta-buttons {
           display: flex;
           justify-content: center;
-          gap: 12px;
-          margin-bottom: 14px;
-        }
-
-        .footer-cta-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 16px 32px;
-          border-radius: 8px;
-          font-size: 16px;
-          font-weight: 500;
-          font-family: 'Inter', sans-serif;
-          text-decoration: none;
-          cursor: pointer;
-          transition: background 0.15s ease, transform 0.1s ease;
-          background: #C3B6FC;
-          color: #1a1a1a;
-          border: 2px solid #C3B6FC;
-        }
-
-        .footer-cta-button:hover {
-          background: #b5a5f7;
-          border-color: #b5a5f7;
-        }
-
-        .footer-cta-button:active {
-          transform: scale(0.97);
-        }
-
-        .footer-cta-button svg {
-          width: 16px;
-          height: 16px;
-        }
-
-        .footer-cta-meta {
-          font-size: 13px;
-          color: #666;
-        }
-
-        .footer-cta-mobile-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 16px 32px;
-          border-radius: 8px;
-          font-size: 16px;
-          font-weight: 500;
-          font-family: 'Inter', sans-serif;
-          cursor: pointer;
-          transition: background 0.15s ease, transform 0.1s ease;
-          background: #C3B6FC;
-          color: #1a1a1a;
-          border: 2px solid #C3B6FC;
-          width: 100%;
-          max-width: 280px;
-        }
-
-        .footer-cta-mobile-btn:hover {
-          background: #b5a5f7;
-        }
-
-        .footer-cta-mobile-btn:active {
-          transform: scale(0.97);
+          gap: 16px;
+          margin-bottom: 32px;
         }
 
         /* ============================================ */
         /* FOOTER                                       */
         /* ============================================ */
         .footer {
-          background: #1a1a1a;
-          margin: 0 40px 0 56px;
-          padding: 24px 40px;
-          border-top: 1px solid #333;
+          padding: 32px 40px;
+          border-top: 1px solid #f0f0f0;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-radius: 0 0 0 0;
         }
 
         .footer-left {
@@ -849,11 +667,7 @@ const MausLanding = () => {
           align-items: center;
           gap: 8px;
           font-size: 13px;
-          color: #666;
-        }
-
-        .footer-left svg {
-          color: #666;
+          color: #999;
         }
 
         .footer-links {
@@ -863,49 +677,26 @@ const MausLanding = () => {
 
         .footer-links a {
           font-size: 13px;
-          color: #666;
+          color: #999;
           text-decoration: none;
         }
 
         .footer-links a:hover {
-          color: #999;
+          color: #666;
         }
 
         /* ============================================ */
-        .mobile-mac-notice {
-          text-align: center;
-        }
-        
-        .mobile-mac-notice p {
-          font-size: 14px;
-          color: #666;
-          font-weight: 500;
-          line-height: 1.5;
-        }
-
-        .mobile-ctas {
-          display: none;
-        }
-
+        /* MOBILE                                       */
+        /* ============================================ */
         @media (max-width: 900px) {
-          .header {
-            padding: 12px 20px 12px 28px;
-          }
-
-          .header-cta span {
-            display: none;
-          }
-
-          .header-cta {
-            padding: 9px 14px;
-            font-size: 13px;
-          }
-
           .main {
-            padding: 40px 24px 24px;
+            flex-direction: column;
+            padding: 24px;
+            gap: 32px;
           }
           
           .hero {
+            text-align: center;
             max-width: 100%;
           }
           
@@ -918,9 +709,42 @@ const MausLanding = () => {
           }
           
           .desktop-only {
-            display: none !important;
+            display: none;
           }
-
+          
+          .demo-container {
+            display: none;
+          }
+          
+          .mobile-social-proof {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+          }
+          
+          .mobile-social-proof .social-proof-text {
+            order: -1;
+          }
+          
+          .mobile-social-proof .avatars {
+            justify-content: center;
+          }
+          
+          .mobile-demo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 32px;
+          }
+          
+          .mobile-demo .demo {
+            width: 100%;
+            max-width: 400px;
+          }
+          
           .mobile-ctas {
             display: flex;
             flex-direction: column;
@@ -929,13 +753,58 @@ const MausLanding = () => {
             width: 100%;
           }
           
-          .mobile-mac-notice {
-            display: block;
-            margin-bottom: 8px;
+          .mobile-ctas .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            justify-content: center;
+          }
+          
+          .mobile-ctas .cta-button {
+            flex: 1;
+            max-width: 180px;
+          }
+          
+          .mobile-ctas .cta-subtexts {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+            justify-content: center;
+          }
+          
+          .mobile-ctas .cta-subtext {
+            flex: 1;
+            max-width: 180px;
+            text-align: center;
           }
 
-          .spot-section {
-            padding: 16px 16px 0;
+          /* Problem section mobile */
+          .problem-section {
+            padding: 60px 24px;
+          }
+
+          .problem-stat {
+            font-size: 48px;
+          }
+
+          .problem-headline {
+            font-size: 22px;
+          }
+
+          /* Features mobile */
+          .features-section {
+            padding: 60px 24px;
+          }
+
+          .features-section-title {
+            font-size: 28px;
+            margin-bottom: 40px;
+          }
+
+          .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 36px 24px;
           }
 
           /* Testimonials mobile */
@@ -947,79 +816,8 @@ const MausLanding = () => {
             font-size: 28px;
           }
 
-          .testimonials-flow {
-            gap: 28px;
-          }
-
-          .testimonial-item {
-            max-width: 100%;
-          }
-
-          .testimonial-item-text {
-            font-size: 16px;
-          }
-
-          /* Use cases mobile */
-          .usecases-outer {
-            padding: 48px 16px;
-          }
-
-          .usecases-block {
-            border-radius: 36px;
-            padding: 40px 24px;
-            gap: 56px;
-          }
-
-          .usecases-title {
-            font-size: 28px;
-          }
-
-          .uc-row,
-          .uc-row.reverse {
-            flex-direction: column;
-            gap: 28px;
-          }
-
-          .uc-title {
-            font-size: 24px;
-          }
-
-          .uc-sentence {
-            font-size: 15px;
-          }
-
-          /* On mobile, GIF always on top */
-          .uc-gif-wrap {
-            order: -1;
-          }
-
-          /* Features mobile */
-          .features-section {
-            padding: 0 16px 48px;
-          }
-
-          .features-block {
-            border-radius: 36px;
-            padding: 40px 20px;
-          }
-
-          .features-title {
-            font-size: 28px;
-          }
-
-          .features-chips {
-            gap: 8px;
-            margin-bottom: 28px;
-          }
-
-          .feature-chip {
-            padding: 8px 16px;
-            font-size: 14px;
-            border-width: 3px;
-          }
-
-          .features-description {
-            font-size: 15px;
+          .testimonials-grid {
+            grid-template-columns: 1fr;
           }
 
           /* Pricing mobile */
@@ -1027,43 +825,35 @@ const MausLanding = () => {
             padding: 60px 24px;
           }
 
-          .pricing-title {
-            font-size: 32px;
+          .pricing-section-title {
+            font-size: 28px;
           }
 
-          .pricing-content {
-            padding: 28px 24px;
+          .pricing-cards {
+            grid-template-columns: 1fr;
           }
 
-          .pricing-body {
-            font-size: 16px;
+          /* FAQ mobile */
+          .faq-section {
+            padding: 60px 24px;
+          }
+
+          .faq-section-title {
+            font-size: 28px;
           }
 
           /* Footer CTA mobile */
           .footer-cta-section {
             padding: 60px 24px;
-            margin: 0 16px;
-            border-radius: 36px 36px 0 0;
           }
 
           .footer-cta-headline {
-            font-size: 32px;
+            font-size: 28px;
           }
 
           .footer-cta-buttons {
             flex-direction: column;
             align-items: center;
-          }
-
-          .footer-cta-desktop {
-            display: none !important;
-          }
-
-          .footer-cta-mobile {
-            display: flex !important;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
           }
 
           /* Footer mobile */
@@ -1072,21 +862,39 @@ const MausLanding = () => {
             gap: 16px;
             text-align: center;
             padding: 24px;
-            margin: 0 16px;
-          }
-        }
-        
-        @media (min-width: 901px) {
-          .mobile-ctas,
-          .mobile-mac-notice,
-          .footer-cta-mobile {
-            display: none;
           }
         }
         
         @media (max-width: 500px) {
           .header {
-            padding: 12px 16px 12px 20px;
+            padding: 16px 20px;
+          }
+          
+          .mobile-ctas .cta-row {
+            flex-direction: column;
+            gap: 12px;
+          }
+          
+          .mobile-ctas .cta-button {
+            width: 220px;
+            max-width: none;
+          }
+          
+          .mobile-ctas .cta-subtexts {
+            flex-direction: column;
+            gap: 0;
+          }
+          
+          .mobile-ctas .cta-subtext {
+            max-width: none;
+          }
+          
+          .mobile-ctas .cta-subtexts .cta-subtext:last-child {
+            margin-top: -4px;
+          }
+
+          .mobile-ctas .cta-subtexts {
+            display: none;
           }
         }
       `}</style>
@@ -1098,280 +906,509 @@ const MausLanding = () => {
         <header className="header">
           <div className="logo">
             <div className="logo-icon">
-              <Rat size={18} color="#ffffff" />
+              <Rat size={20} color="#ffffff" />
             </div>
             <span className="logo-text">Maus</span>
           </div>
-          <a href="/maus/releases/Maus-2.0.1.dmg" className="header-cta desktop-only">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d={applePath}/></svg>
-            <span>Download Free for Mac</span>
-          </a>
         </header>
+        
+        {/* ============================================ */}
+        {/* FEATURED TESTIMONIALS (top bar)               */}
+        {/* ============================================ */}
+        <div className="featured-testimonials">
+          <div className="testimonials-row">
+            <div className="featured-testimonial">
+              <div className="stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="featured-quote">
+                "I ended up purchasing it because it is so damn useful. An unexpected productivity hack."
+              </p>
+            </div>
+            <div className="featured-testimonial desktop-only">
+              <div className="stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="featured-quote">
+                "I've used Alfred, Raycast, PastePal and Maccy. None come close to how quick-and-easy Maus is."
+              </p>
+            </div>
+            <div className="featured-testimonial desktop-only">
+              <div className="stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="featured-quote">
+                "Don't compare this app to others. I've tried tons of clipboard managers. This one became my favorite."
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* ============================================ */}
         {/* HERO                                         */}
         {/* ============================================ */}
         <main className="main">
           <div className="hero">
-            <h1>Your Mac only remembers the last thing you copied.</h1>
+            <h1>Your copy-paste memory. Always handy.</h1>
             <p className="subhero">
-              Maus remembers everything.<br />Copy-paste history that opens where your mouse is.
+              A clipboard manager that lives where your cursor is.
             </p>
             
-            <div className="hero-cta desktop-only">
-              <a href="/maus/releases/Maus-2.0.1.dmg" className="cta-button primary">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d={applePath}/></svg>
-                Download Free for Mac
-              </a>
-              <span className="cta-meta">All features · 24h history · No account</span>
-            </div>
-
-            <div className="mobile-ctas">
-              <div className="mobile-mac-notice">
-                <p>Maus is a Mac app.</p>
+            {/* Desktop CTAs */}
+            <div className="ctas desktop-only">
+              <div className="cta-group">
+                <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  Download Free
+                </a>
+                <span className="cta-subtext">Free forever</span>
               </div>
-              <button className="cta-button primary" onClick={handleCopyLink} style={{width: '100%', maxWidth: 280}}>
-                {linkCopied ? '✓ Link copied!' : 'Copy download link'}
-              </button>
-              <span className="cta-meta">Send it to yourself · Free forever · macOS 14+</span>
+              
+              <div className="cta-group">
+                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
+                  Get Pro – $6.99
+                </a>
+                <span className="cta-subtext">One-time · Unlimited history</span>
+              </div>
             </div>
+            
+            {/* Desktop Social Proof */}
+            <div className="social-proof desktop-only">
+              <div className="avatars">
+                <img className="avatar" src="/avatar1.jpeg" alt="" />
+                <img className="avatar" src="/avatar2.jpeg" alt="" />
+                <img className="avatar" src="https://clusterx.io/avatars/ivy.jpeg" alt="" />
+                <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
+                <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
+              </div>
+              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
+            </div>
+            
+            {/* Mobile Social Proof */}
+            <div className="mobile-social-proof">
+              <p className="social-proof-text">Trusted by hundreds of Mac users</p>
+              <div className="avatars">
+                <img className="avatar" src="/avatar1.jpeg" alt="" />
+                <img className="avatar" src="/avatar2.jpeg" alt="" />
+                <img className="avatar" src="https://clusterx.io/avatars/ivy.jpeg" alt="" />
+                <img className="avatar" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/2e/2e9efa3ef0cb5248b0d51aad9bd4cbad4c348173_full.jpg" alt="" />
+                <img className="avatar" src="https://mockmind-api.uifaces.co/content/human/91.jpg" alt="" />
+              </div>
+            </div>
+            
+            {/* Mobile Demo */}
+            <div className="mobile-demo">
+              <div className="demo">
+                <video autoPlay loop muted playsInline>
+                  <source src="/maus-demo.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <p className="mac-only">Requires macOS 14+</p>
+            </div>
+            
+            {/* Mobile CTAs */}
+            <div className="mobile-ctas">
+              <div className="cta-row">
+                <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  Download Free
+                </a>
+                <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
+                  Get Pro – $6.99
+                </a>
+              </div>
+              <div className="cta-subtexts">
+                <span className="cta-subtext">Free forever · 24h history</span>
+                <span className="cta-subtext">One-time · Unlimited history</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right - Demo (Desktop only) */}
+          <div className="demo-container">
+            <div className="demo">
+              <video autoPlay loop muted playsInline>
+                <source src="/maus-demo.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p className="mac-only">Requires macOS 14+</p>
           </div>
         </main>
 
         {/* ============================================ */}
-        {/* SPOT VIDEO                                   */}
+        {/* THE PROBLEM                                  */}
         {/* ============================================ */}
-        <section className="spot-section">
-          <video
-            className="spot-video"
-            autoPlay
-            loop
-            muted
-            playsInline
-            src="spotwoutweb.mp4"
-          />
+        <section className="problem-section">
+          <p className="problem-stat">50+</p>
+          <h2 className="problem-headline">
+            You copy over 50 things a day.<br />
+            Without Maus, you lose 49 of them.
+          </h2>
+          <p className="problem-body">
+            Your clipboard only remembers the last thing you copied. Every ⌘C overwrites the previous one. Links, code snippets, addresses, passwords - gone. Maus remembers everything so you don't have to.
+          </p>
         </section>
 
         {/* ============================================ */}
-        {/* USE CASES                                    */}
+        {/* FEATURES                                     */}
         {/* ============================================ */}
-        <section className="usecases-outer">
-          <div className="usecases-block">
-            <div className="usecases-header">
-              <h2 className="usecases-title">See it in action</h2>
+        <section className="features-section">
+          <h2 className="features-section-title">Everything you need. Nothing you don't.</h2>
+          <div className="features-grid">
+
+            {/* Feature 1: Instant access */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/open-maus.gif" alt="Opening Maus with keyboard shortcut" /> */}
+                <MousePointerClick size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Opens where your cursor is</h3>
+              <p className="feature-desc">Hit ⌘⇧V and Maus appears right next to your cursor. No dock, no menubar hunting. Paste and keep working.</p>
             </div>
 
-            {USE_CASES.map((uc, i) => {
-              const isReverse = i % 2 !== 0;
-              return (
-                <div className={`uc-row ${isReverse ? 'reverse' : ''}`} key={uc.keyword}>
-                  {/* Text side */}
-                  <div className="uc-text">
-                    <div className="uc-chips">
-                      {uc.features.map((f) => (
-                        <span
-                          key={f}
-                          className="uc-chip"
-                          style={{
-                            background: '#1a1a1a',
-                            color: '#F6F5F4',
-                            border: `4px solid #F6F5F4`,
-                          }}
-                        >
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="uc-title">
-                      {uc.before}{uc.keyword}{uc.after}
-                    </div>
-                    <p className="uc-sentence">{uc.sentence}</p>
-                  </div>
-                  {/* GIF side */}
-                  <div className="uc-gif-wrap">
-                    <img src={uc.gif} alt={`${uc.keyword}${uc.after}`} />
-                  </div>
-                </div>
-              );
-            })}
+            {/* Feature 2: Multiple ways to open */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/open-methods.gif" alt="Multiple ways to open Maus" /> */}
+                <Settings2 size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Open it your way</h3>
+              <p className="feature-desc">Keyboard shortcut, custom hotkey, Key+Click, or double-tap a modifier. Pick what works for you - everything is customizable.</p>
+            </div>
+
+            {/* Feature 3: Window position */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/window-position.gif" alt="Configurable window position" /> */}
+                <Move size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Window position, your call</h3>
+              <p className="feature-desc">Opens above-right of your cursor by default. Prefer above-left, below-left, or below-right? One setting, done.</p>
+            </div>
+
+            {/* Feature 3: Search */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/search.gif" alt="Searching clipboard history in Maus" /> */}
+                <Search size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Find anything, instantly</h3>
+              <p className="feature-desc">Type to search across your entire clipboard history. Filter by text, links, images, or code. It's all there.</p>
+            </div>
+
+            {/* Feature 4: Keyboard-first */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/keyboard.gif" alt="Using Maus with keyboard only" /> */}
+                <Keyboard size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">100% keyboard-friendly</h3>
+              <p className="feature-desc">Navigate, search, paste, pin, delete - all without touching the mouse. Every feature has a shortcut. Visual chrome can be turned off entirely.</p>
+            </div>
+
+            {/* Feature 5: Multipaste queue */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/multipaste.gif" alt="Multipaste queue in Maus" /> */}
+                <ListChecks size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Paste multiple items in sequence</h3>
+              <p className="feature-desc">⌘+Click to select several items, hit Enter, and paste them one by one in order. Perfect for filling forms or moving data.</p>
+            </div>
+
+            {/* Feature 6: Pins */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/pins.gif" alt="Pinning items in Maus" /> */}
+                <Pin size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Pin what matters</h3>
+              <p className="feature-desc">Keep your most-used snippets, templates, and links permanently pinned at the top. Always one shortcut away.</p>
+            </div>
+
+            {/* Feature 7: All content types */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/content-types.gif" alt="Text, images, links, files and colors in Maus" /> */}
+                <Layers size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Text, images, links, files, colors</h3>
+              <p className="feature-desc">Maus captures everything you copy - not just text. Screenshots, file paths, hex colors, URLs - all searchable.</p>
+            </div>
+
+            {/* Feature 8: Split */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/split.gif" alt="Splitting text into individual clips" /> */}
+                <Scissors size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Split text into clips</h3>
+              <p className="feature-desc">Paste a list, a CSV, or a chunk of text and split it into individual clips. Then paste each one separately.</p>
+            </div>
+
+            {/* Feature 9: Edit */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/edit.gif" alt="Editing clipboard content in Maus" /> */}
+                <Pencil size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Edit what you've copied</h3>
+              <p className="feature-desc">Double-click the preview to edit any text or link. Fix a typo, tweak a snippet, save. No need to copy it again.</p>
+            </div>
+
+            {/* Feature 9: Privacy */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/privacy.gif" alt="Excluding apps from Maus" /> */}
+                <ShieldCheck size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Private by default</h3>
+              <p className="feature-desc">Everything stays on your Mac. No cloud, no sync, no account. Exclude sensitive apps like 1Password from being recorded.</p>
+            </div>
+
+            {/* Feature 10: Themes */}
+            <div className="feature-card">
+              <div className="feature-visual">
+                {/* <img src="/features/themes.gif" alt="Light, Dark, Dracula and Solarized themes" /> */}
+                <Palette size={32} color="#1a1a1a" />
+              </div>
+              <h3 className="feature-title">Light, Dark, Dracula, Solarized</h3>
+              <p className="feature-desc">Follows your system appearance automatically, or pick a Pro theme. More themes coming soon.</p>
+            </div>
+
           </div>
         </section>
 
         {/* ============================================ */}
-        {/* SOCIAL PROOF                                 */}
+        {/* TESTIMONIALS                                 */}
         {/* ============================================ */}
         <section className="testimonials-section">
-          <div className="testimonials-header">
-            <h2 className="testimonials-section-title">What people are saying</h2>
-            <p className="testimonials-loved-text">Loved by hundreds of Mac users</p>
-            <div className="testimonials-avatars">
-              <img src="/avatar1.jpeg" alt="" />
-              <img src="/avatar2.jpeg" alt="" />
-              <img src="/avatar3.jpeg" alt="" />
-              <img src="/avatar4.jpeg" alt="" />
-              <img src="/avatar5.jpeg" alt="" />
-            </div>
-          </div>
+          <h2 className="testimonials-section-title">What people are saying</h2>
+          <div className="testimonials-grid">
 
-          <div className="testimonials-flow">
-
-            <div className="testimonial-item">
-              <div className="testimonial-item-stars">
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
                 <Star /><Star /><Star /><Star /><Star />
               </div>
-              <p className="testimonial-item-text">
-                "Don't compare this app to others. I've tried tons of clipboard managers. This one became my favorite."
+              <p className="testimonial-text">
+                "No, seriously, don't compare this app to others. I've tried tons of clipboard managers over the years, and this app became my favorite."
               </p>
             </div>
 
-            <div className="testimonial-item">
-              <div className="testimonial-item-stars">
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
                 <Star /><Star /><Star /><Star /><Star />
               </div>
-              <p className="testimonial-item-text">
-                "I've used Alfred, Raycast, PastePal and Maccy. None come close in terms of how quick-and-easy it is."
+              <p className="testimonial-text">
+                "I ended up purchasing it because it is so damn useful. The singular feature to pop up where my cursor already is totally sold me. This app is such an unexpected productivity hack."
               </p>
             </div>
 
-            <div className="testimonial-item">
-              <div className="testimonial-item-stars">
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
                 <Star /><Star /><Star /><Star /><Star />
               </div>
-              <p className="testimonial-item-text">
+              <p className="testimonial-text">
+                "I've used PasteApp, Alfred, Raycast, Droppy, PastePal and Maccy. But neither of those come close in terms of how quick-and-easy it is. Maus' tiny window is feature rich and not as interruptive."
+              </p>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="testimonial-text">
                 "While PastePal is elegant, Maus is crazy quick and straightforward."
               </p>
             </div>
 
-            <div className="testimonial-item">
-              <div className="testimonial-item-stars">
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
                 <Star /><Star /><Star /><Star /><Star />
               </div>
-              <p className="testimonial-item-text">
-                "I ended up purchasing it because it is so damn useful. Pop up where my cursor is totally sold me."
+              <p className="testimonial-text">
+                "Works like a dream for me, shortcut with Key+Click is super intelligent and smooth."
               </p>
             </div>
 
-            <div className="testimonial-item">
-              <div className="testimonial-item-stars">
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
                 <Star /><Star /><Star /><Star /><Star />
               </div>
-              <p className="testimonial-item-text">
-                "ALSO LOVE HOW RAM EFFICIENT MAUS IS!!!"
+              <p className="testimonial-text">
+                "I freaking love this, well done!"
               </p>
             </div>
 
-            <div className="testimonial-item">
-              <div className="testimonial-item-stars">
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
                 <Star /><Star /><Star /><Star /><Star />
               </div>
-              <p className="testimonial-item-text">
-                "Works like a dream. Key+Click is super intelligent and smooth."
+              <p className="testimonial-text">
+                "This is so much fun (love the brand/name too!)"
               </p>
             </div>
 
-          </div>
-        </section>
-
-        {/* ============================================ */}
-        {/* FEATURES ATOMIC                              */}
-        {/* ============================================ */}
-        <section className="features-section">
-          <div className="features-block">
-            <div className="features-header">
-              <h2 className="features-title">Here's what's inside</h2>
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="testimonial-text">
+                "ALSO LOVE HOW RAM EFFICIENT MAUS IS!!! This is the clipboard manager I was looking for!"
+              </p>
             </div>
 
-            <div className="features-chips">
-              {ATOMS.map((a, i) => (
-                <button
-                  key={a.id}
-                  className={`feature-chip ${activeAtom === i ? (a.id === 'shortcuts' ? 'active-orange' : 'active') : ''}`}
-                  onClick={() => setActiveAtom(i)}
-                  style={a.id === 'shortcuts' && activeAtom !== i ? { background: '#FF7237', color: '#1a1a1a', borderColor: '#1a1a1a' } : {}}
-                >
-                  {a.label}
-                </button>
-              ))}
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="testimonial-text">
+                "The implementation is fantastic! So intuitive."
+              </p>
             </div>
 
-            {ATOMS[activeAtom].id !== 'shortcuts' ? (
-              <>
-                <div className="features-gif-container">
-                  <img src={ATOMS[activeAtom].gif} alt={ATOMS[activeAtom].label} />
+            {/* 
+              PARA AÑADIR MÁS TESTIMONIOS: 
+              Copia este bloque y reemplaza texto:
+              
+              <div className="testimonial-card">
+                <div className="testimonial-stars">
+                  <Star /><Star /><Star /><Star /><Star />
                 </div>
-                <p className="features-description">{ATOMS[activeAtom].description}</p>
-              </>
-            ) : (
-              <div className="shortcuts-grid">
-                <div className="shortcuts-group-title">Core</div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Paste item</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">Enter</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Search</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">Type…</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Close</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">Esc</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Undo</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">Z</kbd></span></div>
-
-                <div className="shortcuts-group-title">Navigate</div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Move up / down</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">↑</kbd><kbd className="shortcuts-kbd">↓</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Jump to first / last</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">↑</kbd><kbd className="shortcuts-kbd">↓</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Show / hide preview</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">→</kbd><kbd className="shortcuts-kbd">←</kbd></span></div>
-
-                <div className="shortcuts-group-title">Actions</div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Pin / Unpin</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">P</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Rename</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">R</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Edit content</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">E</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Delete</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">⌫</kbd></span></div>
-
-                <div className="shortcuts-group-title">Multi-select</div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Toggle select</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">Enter</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Range select</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">⇧</kbd><kbd className="shortcuts-kbd">⌘</kbd><kbd className="shortcuts-kbd">Enter</kbd></span></div>
-                <div className="shortcuts-row"><span className="shortcuts-label">Paste queue</span><span className="shortcuts-keys"><kbd className="shortcuts-kbd">Enter</kbd></span></div>
+                <p className="testimonial-text">
+                  "TEXTO DEL TESTIMONIO AQUÍ"
+                </p>
               </div>
-            )}
+            */}
+
           </div>
         </section>
 
         {/* ============================================ */}
-        {/* PRICING                                      */}
+        {/* FREE VS PRO                                  */}
         {/* ============================================ */}
         <section className="pricing-section">
-          <h2 className="pricing-title">
-            Wait, really{' '}
-            <span className="pricing-free-chip">free</span>?
-          </h2>
+          <h2 className="pricing-section-title">Free vs Pro</h2>
+          <p className="pricing-subtitle">Free is generous. Pro is a no-brainer.</p>
 
-          <div className="pricing-content">
-            <ul className="pricing-check-list">
-              <li className="pricing-check-item">
-                <span className="pricing-check-icon"><svg viewBox="0 0 12 12"><path d="M2.5 6.5L5 9L9.5 3.5" /></svg></span>
-                Yes — you'll never have to stop using it
-              </li>
-              <li className="pricing-check-item">
-                <span className="pricing-check-icon"><svg viewBox="0 0 12 12"><path d="M2.5 6.5L5 9L9.5 3.5" /></svg></span>
-                24h copy paste history (enough for most people)
-              </li>
-              <li className="pricing-check-item">
-                <span className="pricing-check-icon"><svg viewBox="0 0 12 12"><path d="M2.5 6.5L5 9L9.5 3.5" /></svg></span>
-                Every feature included
-              </li>
-            </ul>
+          <div className="pricing-cards">
+            {/* FREE card */}
+            <div className="pricing-card">
+              <h3 className="pricing-card-name">Free</h3>
+              <p className="pricing-card-price">$0</p>
+              <p className="pricing-card-price-note">Free forever, no account needed</p>
+              <ul className="pricing-card-features">
+                <li className="highlight">24 hours of clipboard history</li>
+                <li>Search across all clips</li>
+                <li>Pin your favorites</li>
+                <li>Images, files, links, colors</li>
+                <li>Multipaste queue</li>
+                <li>Split text into clips</li>
+                <li>Rename clips</li>
+                <li>Edit clip content</li>
+                <li>Exclude sensitive apps</li>
+                <li>Multiple ways to open Maus</li>
+                <li>Full keyboard navigation</li>
+                <li>Light &amp; Dark mode</li>
+              </ul>
+              <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
+                <svg viewBox="0 0 24 24" fill="currentColor" style={{width: 16, height: 16}}>
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                Download Free
+              </a>
+            </div>
 
-            <hr className="pricing-divider" />
+            {/* PRO card */}
+            <div className="pricing-card pro">
+              <span className="pricing-card-badge">Most popular</span>
+              <h3 className="pricing-card-name">Pro</h3>
+              <p className="pricing-card-price">$6.99</p>
+              <p className="pricing-card-price-note">One-time payment · Updates forever</p>
+              <ul className="pricing-card-features">
+                <li>Everything in Free, plus:</li>
+                <li className="highlight">Unlimited clipboard history</li>
+                <li className="highlight">Dracula, Solarized Light &amp; more themes coming</li>
 
-            <p className="pricing-pro-label">Need unlimited history?</p>
-            <ul className="pricing-check-list">
-              <li className="pricing-check-item">
-                <span className="pricing-check-icon"><svg viewBox="0 0 12 12"><path d="M2.5 6.5L5 9L9.5 3.5" /></svg></span>
-                $6.99, one time
-              </li>
-              <li className="pricing-check-item">
-                <span className="pricing-check-icon"><svg viewBox="0 0 12 12"><path d="M2.5 6.5L5 9L9.5 3.5" /></svg></span>
-                No subscription, no renewal
-              </li>
-              <li className="pricing-check-item">
-                <span className="pricing-check-icon"><svg viewBox="0 0 12 12"><path d="M2.5 6.5L5 9L9.5 3.5" /></svg></span>
-                Updates forever
-              </li>
-            </ul>
+              </ul>
+              <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
+                Get Pro – $6.99
+              </a>
+            </div>
           </div>
+        </section>
+
+        {/* ============================================ */}
+        {/* FAQ                                          */}
+        {/* ============================================ */}
+        <section className="faq-section">
+          <h2 className="faq-section-title">Questions</h2>
+
+          {[
+            {
+              q: "Is Maus really free?",
+              a: "Yes. The free version includes every feature - search, pins, multipaste, all content types, keyboard navigation, customizable shortcuts, exclude apps, and more. The only differences with Pro are the history limit (24h vs unlimited) and custom themes. No trial, no expiration, no account."
+            },
+            {
+              q: "Does it have dark mode?",
+              a: "Yes. Maus follows your system appearance automatically. It also has Pro themes like Dracula and Solarized Light, with more coming."
+            },
+            {
+              q: "Does my data leave my Mac?",
+              a: "No. Everything is stored locally on your device. There's no cloud sync, no account, and no data collection. Your clipboard history stays on your Mac."
+            },
+            {
+              q: "What about passwords and sensitive data?",
+              a: "You can exclude specific apps (like 1Password or your banking app) so nothing from those apps is ever recorded."
+            },
+            {
+              q: "Does it work with Terminal and iTerm2?",
+              a: "Yes. Maus works everywhere, including Terminal, iTerm2, and SSH sessions."
+            },
+            {
+              q: "Can I use it with keyboard only?",
+              a: "Absolutely. Arrows to navigate, Enter to paste, Cmd+P to pin, Cmd+R to rename, Cmd+Click for multipaste. Every feature has a shortcut. You can also hide all visual UI elements for a minimal, keyboard-only workflow."
+            },
+            {
+              q: "I already use Cmd+Shift+V in another app. Can I change the shortcut?",
+              a: "Yes. You can set any custom keyboard shortcut, use Key+Click (like Cmd+Click), or double-tap a modifier key. Whatever feels natural to you."
+            },
+            {
+              q: "Can I edit what I've copied?",
+              a: "Yes. Double-click the preview to edit text or links. Click outside or Cmd+Enter to save, Escape to discard."
+            },
+            {
+              q: "How is Maus different from Raycast, Maccy, or Paste?",
+              a: "Maus appears exactly where your cursor is - no fixed window, no menubar popup. It's designed to be faster: open, find, paste, gone. It captures images, files, colors, and links with rich previews, and the multipaste queue lets you paste items in sequence."
+            },
+            {
+              q: "Can I hide the menu bar icon?",
+              a: "Yes. You can hide it from Preferences. If you need to access Preferences again, you can always get there from the Maus main window."
+            },
+            /* 
+              PARA AÑADIR MÁS PREGUNTAS:
+              Copia este formato y añádelo al array:
+              
+              {
+                q: "PREGUNTA AQUÍ",
+                a: "RESPUESTA AQUÍ"
+              },
+            */
+          ].map((faq, i) => (
+            <div className="faq-item" key={i}>
+              <button className="faq-question" onClick={() => toggleFaq(i)}>
+                {faq.q}
+                <ChevronDown className={openFaq === i ? 'open' : ''} />
+              </button>
+              {openFaq === i && (
+                <p className="faq-answer">{faq.a}</p>
+              )}
+            </div>
+          ))}
         </section>
 
         {/* ============================================ */}
@@ -1379,25 +1416,17 @@ const MausLanding = () => {
         {/* ============================================ */}
         <section className="footer-cta-section">
           <h2 className="footer-cta-headline">Stop losing what you copy.</h2>
-          <p className="footer-cta-sub">Takes 10 seconds. 5 MB. No account, no sign-up.</p>
-          
-          {/* Desktop */}
-          <div className="footer-cta-desktop">
-            <div className="footer-cta-buttons">
-              <a href="/maus/releases/Maus-2.0.1.dmg" className="footer-cta-button">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d={applePath}/></svg>
-                Download Free for Mac
-              </a>
-            </div>
-            <p className="footer-cta-meta">No account needed · macOS 14+</p>
-          </div>
-          
-          {/* Mobile */}
-          <div className="footer-cta-mobile">
-            <button className="footer-cta-mobile-btn" onClick={handleCopyLink}>
-              {linkCopied ? '✓ Link copied!' : 'Copy download link'}
-            </button>
-            <p className="footer-cta-meta">Send it to yourself · macOS 14+</p>
+          <p className="footer-cta-sub">Free forever. Pro for $6.99 once. No subscription.</p>
+          <div className="footer-cta-buttons">
+            <a href="/maus/releases/Maus-1.5.6.dmg" className="cta-button primary">
+              <svg viewBox="0 0 24 24" fill="currentColor" style={{width: 16, height: 16}}>
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              Download Free
+            </a>
+            <a href="https://mausformac.lemonsqueezy.com/checkout/buy/fa311099-77f7-4b0d-8d39-eab756710f15" className="cta-button secondary">
+            One-time payment – $6.99
+            </a>
           </div>
         </section>
 
@@ -1411,9 +1440,10 @@ const MausLanding = () => {
           </div>
           <div className="footer-links">
             <a href="mailto:manu@mausformac.com">Contact</a>
+            {/* TODO: Añadir link a privacy policy cuando exista */}
+            {/* <a href="/privacy">Privacy</a> */}
           </div>
         </footer>
-
       </div>
     </div>
   );
