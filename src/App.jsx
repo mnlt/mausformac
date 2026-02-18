@@ -1001,7 +1001,7 @@ const MausLanding = () => {
             {/* Mobile Demo */}
             <div className="mobile-demo">
               <div className="demo">
-              <img src="webzoom.gif" alt="" />
+                <img src="webzoom.gif" alt="" />
               </div>
               <p className="mac-only">Requires macOS 14+</p>
             </div>
@@ -1029,25 +1029,11 @@ const MausLanding = () => {
           {/* Right - Demo (Desktop only) */}
           <div className="demo-container">
           <div className="demo">
-              <img src="webzoom.gif" alt="" />
+                <img src="webzoom.gif" alt="" />
               </div>
             <p className="mac-only">Requires macOS 14+</p>
           </div>
         </main>
-
-        {/* ============================================ */}
-        {/* THE PROBLEM                                  */}
-        {/* ============================================ */}
-        <section className="problem-section">
-          <p className="problem-stat">50+</p>
-          <h2 className="problem-headline">
-            You copy over 50 things a day.<br />
-            Without Maus, you lose 49 of them.
-          </h2>
-          <p className="problem-body">
-            Your clipboard only remembers the last thing you copied. Every ⌘C overwrites the previous one. Links, code snippets, addresses, passwords - gone. Maus remembers everything so you don't have to.
-          </p>
-        </section>
 
         {/* ============================================ */}
         {/* FEATURES                                     */}
