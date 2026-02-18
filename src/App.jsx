@@ -1001,9 +1001,7 @@ const MausLanding = () => {
             {/* Mobile Demo */}
             <div className="mobile-demo">
               <div className="demo">
-                <video autoPlay loop muted playsInline>
-                  <source src="/spotwoutweb.mp4" type="video/mp4" />
-                </video>
+              <img src="webzoom.gif" alt="" />
               </div>
               <p className="mac-only">Requires macOS 14+</p>
             </div>
@@ -1030,11 +1028,9 @@ const MausLanding = () => {
 
           {/* Right - Demo (Desktop only) */}
           <div className="demo-container">
-            <div className="demo">
-              <video autoPlay loop muted playsInline>
-                <source src="/maus-demo.mp4" type="video/mp4" />
-              </video>
-            </div>
+          <div className="demo">
+              <img src="webzoom.gif" alt="" />
+              </div>
             <p className="mac-only">Requires macOS 14+</p>
           </div>
         </main>
