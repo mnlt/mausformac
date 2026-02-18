@@ -6,6 +6,29 @@
     <language>en</language>
 
     <item>
+      <title>Version 2.0.1</title>
+      <pubDate>Wed, 18 Feb 2026 12:23:46 +0000</pubDate>
+      <sparkle:version>2.0.1</sparkle:version>
+      <sparkle:shortVersionString>2.0.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 2.0.1</h2>
+        <ul>
+          <li>- Improved first-launch experience with interactive tutorial
+- New keyboard shortcuts window
+- Minor bug fixes and performance improvements</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-2.0.1.dmg"
+        length="3338043"
+        type="application/octet-stream"
+        sparkle:edSignature="Fa2+P+5gf8S35OJ5it0Y4jJvHSOoJ7k6m85LkGxUR/jDB9UWxLDNL57MUM5eKMuTP0Ytk3h81OMkPjx3f4nNAQ=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 2.0.0</title>
       <pubDate>Tue, 17 Feb 2026 11:52:50 +0000</pubDate>
       <sparkle:version>2.0.0</sparkle:version>
