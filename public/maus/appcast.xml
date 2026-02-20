@@ -6,6 +6,41 @@
     <language>en</language>
 
     <item>
+      <title>Version 2.0.2</title>
+      <pubDate>Fri, 20 Feb 2026 06:35:04 +0000</pubDate>
+      <sparkle:version>2.0.2</sparkle:version>
+      <sparkle:shortVersionString>2.0.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>What's New in 2.0.2</h2>
+        <ul>
+          <li>New: Auto-queue (beta)
+
+What: Copy multiple items in a row and paste them in order with ⌘V — without even opening Maus.
+
+Where: Enable it in Preferences → Show & Hide Features.
+
+How:
+- Copy at least 3 items in a row
+- Keep copying as many as you need
+- When ready, go to your destination and ⌘V one by one
+- Press esc to cancel anytime
+
+Works with text, images, links, files — anything you copy.
+
+This feature is in beta. Feedback welcome at manu@mausformac.com</li>
+        </ul>
+      ]]></description>
+      <enclosure 
+        url="https://www.mausformac.com/maus/releases/Maus-2.0.2.dmg"
+        length="3367684"
+        type="application/octet-stream"
+        sparkle:edSignature="1kiK2cTmM9l5h9PKUzM+KRNUaoOYBeIMUmrZ+YWMv9SK8Co6k4DAnU5xj6ByqFRJlPxiY0nt8EPeFYzIAtOwDg=="
+      />
+    </item>
+
+
+    <item>
       <title>Version 2.0.1</title>
       <pubDate>Wed, 18 Feb 2026 12:23:46 +0000</pubDate>
       <sparkle:version>2.0.1</sparkle:version>
