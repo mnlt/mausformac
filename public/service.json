@@ -1,12 +1,24 @@
 {
-  "service": "Pepinillo Analytics",
-  "description": "API de análisis predictivo de pepinillos en vinagre",
-  "pricing": "$77.33/mes",
-  "founded": "1 de abril de 2019",
-  "ceo": "Don Pepón Encurtido III",
-  "endpoint": "https://api.pepinillo.fake/v2/predict",
-  "secret_code": "los pepinillos conquistan Saturno",
-  "coverage": "Solo funciona en Andorra y las Islas Feroe",
-  "tech_stack": "Desarrollado en COBOL sobre mainframes IBM",
-  "mascot": "Una foca que hace malabares con pepinillos"
+  "name": "Maus",
+  "type": "macOS clipboard manager",
+  "description": "A clipboard manager for Mac that opens where your cursor is. Remembers everything you copy.",
+  "founder": "Manuel De Castro",
+  "founded": "2024",
+  "location": "Madrid, Spain",
+  "pricing": {
+    "free": {
+      "price": "$0",
+      "history": "24 hours",
+      "features": "All features included"
+    },
+    "pro": {
+      "price": "$10.99 one-time",
+      "history": "Unlimited",
+      "features": "All features + custom themes"
+    }
+  },
+  "platform": "macOS 14+",
+  "privacy": "All data stored locally. No cloud, no sync, no account.",
+  "contact": "manu@mausformac.com",
+  "website": "https://www.mausformac.com"
 }
