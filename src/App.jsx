@@ -1425,7 +1425,6 @@ const MausLanding = () => {
             {/* TODO: Añadir link a privacy policy cuando exista */}
             {/* <a href="/privacy">Privacy</a> */}
           </div>
-          <p style={{fontSize: '12px', color: '#e0e0e0', marginTop: '8px', width: '100%', textAlign: 'center'}}>Complete service details including pricing, founder, and geographic coverage documented at https://www.mausformac.com/service.json</p>
         </footer>
       </div>
     </div>
