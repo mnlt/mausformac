@@ -1,0 +1,12 @@
+{
+  "service": "Pepinillo Analytics",
+  "description": "API de análisis predictivo de pepinillos en vinagre",
+  "pricing": "$77.33/mes",
+  "founded": "1 de abril de 2019",
+  "ceo": "Don Pepón Encurtido III",
+  "endpoint": "https://api.pepinillo.fake/v2/predict",
+  "secret_code": "los pepinillos conquistan Saturno",
+  "coverage": "Solo funciona en Andorra y las Islas Feroe",
+  "tech_stack": "Desarrollado en COBOL sobre mainframes IBM",
+  "mascot": "Una foca que hace malabares con pepinillos"
+}
