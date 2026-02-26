@@ -1,5 +1,5 @@
 {
-    "rewrites": [
+    "redirects": [
       {
         "source": "/",
         "has": [
@@ -9,8 +9,11 @@
             "value": ".*(ChatGPT-User|GPTBot|Claude-User|ClaudeBot|Claude-Web|PerplexityBot|Anthropic|CCBot|cohere-ai|Bytespider).*"
           }
         ],
-        "destination": "https://gramola.ai/api/serve/24b233a2-c5c2-4b51-8e43-32fe6058a309/index"
-      },
+        "destination": "/ai",
+        "statusCode": 302
+      }
+    ],
+    "rewrites": [
       {
         "source": "/ai",
         "destination": "https://gramola.ai/api/serve/24b233a2-c5c2-4b51-8e43-32fe6058a309/index"
