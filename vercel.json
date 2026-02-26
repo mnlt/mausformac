@@ -1,19 +1,16 @@
 {
-    "redirects": [
+    "rewrites": [
       {
         "source": "/",
         "has": [
           {
             "type": "header",
             "key": "user-agent",
-            "value": ".*(ChatGPT-User|GPTBot|Claude-User|ClaudeBot|Claude-Web|PerplexityBot|Anthropic|CCBot|cohere-ai|Bytespider|PetalBot|Applebot-Extended).*"
-        }
+            "value": ".*(ChatGPT-User|GPTBot|Claude-User|ClaudeBot|Claude-Web|PerplexityBot|Anthropic|CCBot|cohere-ai|Bytespider).*"
+          }
         ],
-        "destination": "https://gramola.ai/api/serve/24b233a2-c5c2-4b51-8e43-32fe6058a309/index",
-        "statusCode": 302
-      }
-    ],
-    "rewrites": [
+        "destination": "https://gramola.ai/api/serve/24b233a2-c5c2-4b51-8e43-32fe6058a309/index"
+      },
       {
         "source": "/ai",
         "destination": "https://gramola.ai/api/serve/24b233a2-c5c2-4b51-8e43-32fe6058a309/index"
