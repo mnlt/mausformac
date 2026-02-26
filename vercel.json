@@ -1,0 +1,15 @@
+{
+    "rewrites": [
+      {
+        "source": "/",
+        "has": [
+          {
+            "type": "header",
+            "key": "user-agent",
+            "value": ".*(ChatGPT-User|GPTBot|ClaudeBot|Claude-Web|PerplexityBot|Anthropic).*"
+          }
+        ],
+        "destination": "https://gramola.ai/api/serve/24b233a2-c5c2-4b51-8e43-32fe6058a309/index"
+      }
+    ]
+  }
