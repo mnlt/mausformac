@@ -11,7 +11,7 @@ export default async function middleware(req) {
   if (isAI) {
     try {
       const r = await fetch(`https://wellread.md/api/serve?slug=${slug}`, {
-        headers: { 'user-agent': ua, accept, 'x-wellread-token': WELLREAD, 'x-forwarded-host': host },
+        headers: { 'user-agent': ua, accept, 'x-wellread-token': WELLREAD, 'x-wellread-host': host },
         signal: AbortSignal.timeout(3000),
       });
       if (!r.ok) return;
