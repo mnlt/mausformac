@@ -8,8 +8,9 @@ export default async function middleware(req) {
 
   try {
     const slug = new URL(req.url).pathname.replace(/^\/|\/$/g, '') || 'index';
+    const host = new URL(req.url).hostname;
     const r = await fetch(`https://wellread.md/api/serve?slug=${slug}`, {
-      headers: { 'user-agent': ua, accept, 'x-wellread-token': WELLREAD },
+      headers: { 'user-agent': ua, accept, 'x-wellread-token': WELLREAD, 'x-forwarded-host': host },
       signal: AbortSignal.timeout(3000),
     });
     if (!r.ok) return;
